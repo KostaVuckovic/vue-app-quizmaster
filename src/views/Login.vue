@@ -121,9 +121,9 @@ export default {
     flex-direction: column;
     border: 2px solid lightgray;
     height: 70%;
-    max-height: 620px;
+    max-height: 600px;
     width: 60%;
-    max-width: 650px;
+    max-width: 630px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
     background-color: white;
@@ -138,7 +138,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 75%;
+    width: 77%;
     height: 65%;
 }
 
