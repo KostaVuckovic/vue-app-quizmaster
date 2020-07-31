@@ -56,7 +56,7 @@ data(){
 },
 mounted(){
     this.showQuestions(this.score)   
-    // this.countDownTimer()
+    this.countDownTimer()
 },
 computed: {
     SCORE(){

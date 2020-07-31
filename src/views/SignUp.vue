@@ -237,7 +237,7 @@ export default {
   height: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .bottom{
@@ -258,6 +258,10 @@ export default {
   width: 15%;
   height: 100%;
   position: relative;
+}
+
+.avatars:hover{
+  cursor: pointer;
 }
 
 .avatars img{
@@ -372,7 +376,7 @@ input[type=password]:focus {
   width: 100%;
   visibility: hidden;
   text-align: center;
-  /* height: 15px; */
+  height: 30px;
 }
 
 .msg p{
@@ -389,10 +393,11 @@ input[type=password]:focus {
 }
 
 .containerSignUp{
-    border: 1px solid lightgray;
-    width: 90%;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
+  border: 1px solid lightgray;
+  width: 90%;
+  max-height: 600px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
 }
 
 .containerSignUp h1 {
@@ -427,8 +432,8 @@ input[type=password]:focus {
 .action-button{
   border: none;
   padding: 0 10px;
-	font-size: 14px;
-  height: 45%;	
+	font-size: 12px;
+  height: 40%;	
 }
 
 .inputsSignUp{
@@ -466,10 +471,6 @@ input[type=text], input[type=password]{
 }
 
 @media screen and (min-width: 350px) and (max-width: 600px){
-.containerSignUp{
-  max-width: 400px;
-}
-
 .wrapperSignUp{
   min-height: 720px;
   background: url('../assets/quiz1.jpg') repeat center center fixed;
@@ -480,6 +481,7 @@ input[type=text], input[type=password]{
     border: 1px solid lightgray;
     max-height: 630px;
     width: 90%;
+    max-width: 380px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
 }
@@ -574,7 +576,7 @@ input[type=text], input[type=password]{
 }
 
 .containerSignUp h1 {
-  font-size: 6.3rem;
+  font-size: 5.8rem;
   margin: 20px 0;
 }
 
@@ -625,6 +627,10 @@ input[type=text], input[type=password]{
 .msg p{
   font-size: 1.6rem;
 }
+
+.footerSignUp p{
+  font-size: 1.4rem;
+}
 }
 
 @media screen and (min-width: 951px) and (max-width: 1450px){
@@ -637,14 +643,14 @@ input[type=text], input[type=password]{
   border: 1px solid lightgray;
   width: 55%;
   border-radius: 5px;
-  max-width: 500px;
-  max-height: 750px;
+  max-width: 480px;
+  max-height: 600px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
 }
 
 .containerSignUp  h1 {
-  font-size: 4.7rem;
-  margin: 7px 0;
+  font-size: 4.5rem;
+  margin: 7px 0 10px 0;
 }
 
 .signUpForm{
@@ -672,11 +678,11 @@ input[type=text], input[type=password]{
 }
 
 .inputsSignUp{
-  height: 70%;
+  height: 68%;
 }
 
 .inputsSignUp label{
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .goLog{

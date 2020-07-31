@@ -464,7 +464,7 @@ methods:{
 
 @media screen and (min-width: 601px) and  (max-width: 950px){
 .wrapper{
-    background: url('../assets/quiz1.jpg') repeat center center fixed;
+    background: url('../assets/quiz111.jpg') repeat center center fixed;
     background-size: cover;
 }
 
@@ -485,7 +485,7 @@ methods:{
 }
 
 .categorie img{
-    width: 55%;
+    width: 45%;
 }
 
 .textCat h1{

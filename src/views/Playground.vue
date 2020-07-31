@@ -60,7 +60,7 @@ computed: {
 },
 created(){
     this.showQuestions(0);
-    // this.countDownTimer();
+    this.countDownTimer();
 },
 beforeRouteEnter (to, from, next) {
   let sid = localStorage.getItem('sid');
@@ -231,8 +231,7 @@ methods: {
     padding: 15px 20px;
     font-size: 3.5rem;
     text-align: center;
-    color: #005eff;
-    background-color: #fff;
+    color: #c23131;
     border-radius: 5px;
 }
 
@@ -307,6 +306,13 @@ methods: {
 }
 
 @media screen and (max-width: 349px) {
+.playground{
+    background: url('../assets/quizMini.jpg') repeat center center fixed;
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    }
+
 .container{
     width: 100%;
     height: 75%;
@@ -348,7 +354,7 @@ methods: {
 @media screen and (min-width: 350px) and (max-width: 600px){
 .playground{
     justify-content: center;
-    background: url('../assets/quiz222.jpg') repeat center center fixed;
+    background: url('../assets/quizMini.jpg') repeat center center fixed;
     background-repeat: repeat;
     background-position: center;
     background-size: cover;
@@ -367,7 +373,6 @@ methods: {
 
 .question{
     padding: 0 10px;
-    color: #22d1ee;
     font-size: 1.8rem;
 }
 
@@ -409,7 +414,7 @@ methods: {
 
 .playground{
     justify-content: center;
-    background: url('../assets/quiz222.jpg') repeat center center fixed;
+    background: url('../assets/quiz11.jpg') repeat center center fixed;
     background-repeat: repeat;
     background-position: center;
     background-size: cover;
@@ -425,7 +430,7 @@ methods: {
 
 .question{
     padding: 0 10px;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .answers_container{
@@ -435,7 +440,7 @@ methods: {
 
 .answers{
     height: 35%;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
 }
 
 .score_container{
@@ -466,7 +471,7 @@ methods: {
 
 .question{
     padding: 0 10px;
-    font-size: 2.7rem;
+    font-size: 2.5rem;
 }
 
 .answers_container{

@@ -422,10 +422,9 @@ input[type=text], input[type=password]{
 }
 
 .containerLogin{
-    padding: 10px;
-    height: 85%;
+    height: 75%;
     width: 45%;
-    max-width: 550px;
+    max-width: 500px;
     min-width: 530px;
     max-height: 600px;
     border-radius: 20px;
@@ -434,7 +433,7 @@ input[type=text], input[type=password]{
 
 .containerLogin h1 {
     font-size: 6.5rem;
-    margin: 15px 0 10px 0;
+    margin: 5px 0 10px 0;
 }
 
 .action-button{
@@ -447,13 +446,13 @@ input[type=text], input[type=password]{
 }
 
 input[type=text], input[type=password]{
-    padding: 3px 9px; 
+    padding: 2px 9px; 
     border: 2px solid lightgray;
     font-size: 1.3rem;
 }
 
 .footerLogin p{
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 
 .msg{
