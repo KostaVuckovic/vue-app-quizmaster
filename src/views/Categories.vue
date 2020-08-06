@@ -367,8 +367,14 @@ methods:{
     font-size: 1rem;
 }
 
+.categories{
+    width: 100%;
+    height: 70%;
+    max-height: 230px;
+}
+
 .categorie img{
-    width: 70%;
+    width: 55%;
 }
 
 .profile{
@@ -417,6 +423,7 @@ methods:{
 
 .categories{
     height: 75%;
+    max-height: 330px;
     width: 100%;
 }
 
@@ -481,15 +488,16 @@ methods:{
 
 .categories{
     height: 70%;
+    max-height: 480px;
     width: 100%;
 }
 
 .categorie img{
-    width: 45%;
+    width: 40%;
 }
 
 .textCat h1{
-    font-size: 1.8rem;
+    font-size: 2.1rem;
 }
 
 .profile{

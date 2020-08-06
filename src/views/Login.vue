@@ -120,10 +120,10 @@ export default {
     align-items: center;
     flex-direction: column;
     border: 2px solid lightgray;
-    height: 70%;
+    height: 65%;
     max-height: 600px;
     width: 60%;
-    max-width: 630px;
+    max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
     background-color: white;
@@ -189,7 +189,7 @@ input[type=text], input[type=password]{
     padding: 3px 13px; 
     border-radius: 5px;
     border: 1px solid lightgray;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -250,7 +250,7 @@ input[type=password]:focus {
 .containerLogin{
     border: 1px solid lightgray;
     height: 63%;
-    max-height: 300px;
+    max-height: 350px;
     width: 93%;
     max-width: 330px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
@@ -278,7 +278,7 @@ input[type=password]:focus {
 
 input[type=text], input[type=password]{
     padding: 2px 9px; 
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
 .footerLogin{
@@ -309,9 +309,9 @@ input[type=text], input[type=password]{
 .containerLogin{
     border: 1px solid lightgray;
     height: 65%;
-    max-height: 450px;
+    max-height: 430px;
     width: 90%;
-    max-width: 450px;
+    max-width: 400px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
 }
 
@@ -361,15 +361,15 @@ input[type=text], input[type=password]{
 @media screen and (min-width: 601px) and  (max-width: 950px){
   .wrapperLogin{
     min-height: 900px;
-    background: url('../assets/quiz1.jpg') repeat center center fixed;
+    background: url('../assets/quiz111.jpg') repeat center center fixed;
   background-size: cover;
 }
 
 .containerLogin{
-    height: 70%;
+    height: 60%;
     width: 75%;
-    max-width: 550px;
-    max-height: 600px;
+    max-width: 520px;
+    max-height: 530px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
 }
@@ -404,7 +404,7 @@ input[type=text], input[type=password]{
 }
 
 .footerLogin p{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .msg{
@@ -424,15 +424,15 @@ input[type=text], input[type=password]{
 .containerLogin{
     height: 75%;
     width: 45%;
-    max-width: 500px;
-    min-width: 530px;
-    max-height: 600px;
+    min-width: 400px;
+    max-width: 450px;
+    max-height: 500px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
 }
 
 .containerLogin h1 {
-    font-size: 6.5rem;
+    font-size: 6.3rem;
     margin: 5px 0 10px 0;
 }
 
@@ -446,13 +446,13 @@ input[type=text], input[type=password]{
 }
 
 input[type=text], input[type=password]{
-    padding: 2px 9px; 
+    padding: 3px 9px; 
     border: 2px solid lightgray;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .footerLogin p{
-    font-size: 1rem;
+    font-size: .95rem;
 }
 
 .msg{

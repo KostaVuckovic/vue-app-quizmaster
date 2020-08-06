@@ -582,7 +582,7 @@ methods: {
 }
 
 .wrong{
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     transition: font-size 1s;
 }
 

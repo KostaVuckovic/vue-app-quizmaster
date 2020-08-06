@@ -354,7 +354,7 @@ methods: {
 @media screen and (min-width: 350px) and (max-width: 600px){
 .playground{
     justify-content: center;
-    background: url('../assets/quizMini.jpg') repeat center center fixed;
+    background: url('../assets/quiz111.jpg') repeat center center fixed;
     background-repeat: repeat;
     background-position: center;
     background-size: cover;
@@ -414,7 +414,7 @@ methods: {
 
 .playground{
     justify-content: center;
-    background: url('../assets/quiz11.jpg') repeat center center fixed;
+    background: url('../assets/quiz111.jpg') repeat center center fixed;
     background-repeat: repeat;
     background-position: center;
     background-size: cover;
@@ -460,6 +460,14 @@ methods: {
 }
 
 @media screen and (min-width: 951px) and  (max-width: 1450px){
+.playground{
+    justify-content: center;
+    background: url('../assets/quiz11.jpg') repeat center center fixed;
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .container{
     width: 70%;
     max-width: 850px;

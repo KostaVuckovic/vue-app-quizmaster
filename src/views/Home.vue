@@ -1,27 +1,16 @@
 <template>
   <div class="home">
-
     <div class="main">
       <h1>QUIZ<br>MASTER</h1>
-      <button class="play" @click="clickCheck"><span class="material-icons">play_circle_filled</span></button>
+      <button class="start-btn" @click="clickCheck">START</button>
     </div>
-
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'Home',
-  mounted(){
-    setTimeout(this.enterPress, 2000);
-  },
   methods: {
-    enterPress(){
-      let anim = document.querySelector('.play');
-      anim.style.visibility = "visible";
-      anim.style.opacity = "1";
-    },
     animateCSS(element, animationName, callback){
       const node = document.querySelector(element)
       node.classList.add('animated', animationName)
@@ -37,65 +26,74 @@ export default {
     },
     clickCheck(){
       let th = this;
-      this.animateCSS('.play', 'slideOutRight', function() {
+      this.animateCSS('.start-btn', 'flash', function() {
         th.$router.push({name: 'SignUp'})
-      })
-      
+      }) 
     }
   }
 }
 </script>
 
 <style scoped>
-  .home {
-    flex-direction: column;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
-    background: url('../assets/quiz1.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-    }
-
-  .main h1{
-    color: rgb(245, 245, 245);
-    font-size: 8rem;
-    pointer-events: none;
-    margin: 0;
-    font-weight: 900;
+.home {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background: url('../assets/quiz1.jpg') repeat center center fixed;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
   }
 
-  .play{
-    animation-duration: 1s;
-    border: 0;
-    opacity: 0;
-    background-color: darkcyan;
-    transition: visibility 0s, opacity 0.5s linear;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    border-radius: 100%;
-    font-family: 'Press Start 2P', cursive;
-  }
+.main h1{
+  color: rgb(245, 245, 245);
+  font-size: 8rem;
+  pointer-events: none;
+  margin: 0;
+  font-weight: 900;
+}
 
-  .play span{
-    font-size: 5rem;
-    text-align: center;
-    vertical-align: middle;
-  }
+.start-btn{
+  font-family: 'Press Start 2p';
+  text-align: center;
+  margin:5px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px ;
+  background-color: lightgray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: gray;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 .2em gray; 
+  cursor: pointer;
 
-  .main{
-    align-items: center;
-    width: 100%;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-  }
+}
+
+.start-btn:active {
+  box-shadow: none;
+  position: relative;
+  top: .2em;
+}
+
+.start-btn:focus{
+  outline: none;
+} 
+
+.main{
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
 
 @media screen and (max-width: 349px){
   .home {
@@ -110,24 +108,6 @@ export default {
     font-size: 4.1rem;
     pointer-events: none;
     margin: 0;
-  }
-
-  .play{
-    animation-duration: 1s;
-    border: 0;
-    opacity: 0;
-    background-color: darkcyan;
-    transition: visibility 0s, opacity 0.5s linear;
-    font-size: 1rem;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-}
-
-  .play span{
-    font-size: 2rem;
-    text-align: center;
-    vertical-align: middle;
   }
 
   .main{
@@ -157,22 +137,6 @@ export default {
     margin: 0;
   }
 
-  .play{
-    animation-duration: 1s;
-    border: 0;
-    opacity: 0;
-    background-color: darkcyan;
-    transition: visibility 0s, opacity 0.5s linear;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    border-radius: 100%;
-}
-
-.play span{
-  font-size: 3rem;
-
-}
 
   .main{
     align-items: center;
@@ -200,21 +164,6 @@ export default {
     margin: 0;
   }
 
-  .play{
-    animation-duration: 1s;
-    border: 0;
-    opacity: 0;
-    background-color: darkcyan;
-    transition: visibility 0s, opacity 0.5s linear;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-}
-
-.play span{
-    font-size: 3rem;
-
-}
 
   .main{
     align-items: center;
@@ -241,28 +190,11 @@ export default {
   margin: 0;
 }
 
-.play{
-  animation-duration: 1s;
-  border: 0;
-  opacity: 0;
-  background-color: darkcyan;
-  transition: visibility 0s, opacity 0.5s linear;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px;
-  border-radius: 100%;
-    
-}
-
-.play span{
-  font-size: 3.5rem;
-
-}
 
 .main{
   align-items: center;
   width: 100%;
-  height: 55%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
