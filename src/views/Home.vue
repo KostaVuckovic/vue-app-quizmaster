@@ -119,6 +119,10 @@ export default {
     align-items: center;
     text-align: center;
   }
+
+  .start-btn{
+    font-size: .8rem;
+  }
 }
 
 
@@ -137,7 +141,6 @@ export default {
     margin: 0;
   }
 
-
   .main{
     align-items: center;
     width: 100%;
@@ -146,6 +149,10 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
+  }
+
+  .start-btn{
+    font-size: 1rem;
   }
 }
 
