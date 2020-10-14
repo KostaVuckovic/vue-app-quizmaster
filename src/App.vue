@@ -6,24 +6,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  
-}
-</script>
-
-<style>
+<style lang="scss">
 body{
   margin: 0;
   padding: 0;
+  background-color: #252b41;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Indie Flower', cursive;
-  font-weight: bold;
 }
 
 .fade-enter-active, .fade-leave-active {
