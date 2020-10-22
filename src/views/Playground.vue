@@ -1,33 +1,27 @@
 <template>
-<div class="playground">
-    
-    <div class="container">
-        <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        
-        <div class="wrapper">
-            <div class="score_container">
-                <p>SCORE:</p>
-                <p class="score">{{SCORE}}</p>
-            </div>
-            <div class="question_count">
-                <p>QUESTS:</p>
-                <p class="quest">{{QUESTS}}/5</p>
-            </div>
-            <div class="wrappGame">
-                <div class="question">
-                    <p>{{this.question}}</p>
-                </div>
-                <div class="answers_container">
-                    <div class="answers" v-for="a in answers" :key="a.index" @click="clickAns(a.ans_option, $event)">
-                        {{a.ans_answer}}
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
+<div class="wrapper">
+    <header>
+        <img :src="getImgUrl(this.category_id)" alt="category" v-if="category_id">
+        <h2>{{category_name}}</h2>
+    </header>
+
+    <div class="progress2 progress-moved">
+        <div class="progress-bar2">
+        </div>                       
+    </div> 
+
+    <div class="score">
+        <p>Score: <span>{{SCORE}}</span></p>
+        <p><span>{{QUESTS}}</span>/5</p>
+    </div>
+
+    <div class="question">
+        <p>{{question}}</p>
+    </div>
+
+    <div class="answers">
+        <div class="answer" v-for="a in answers" :key="a.index" @click="clickAns(a.ans_option, $event)">
+            {{a.ans_answer}}
         </div>
     </div>
       
@@ -47,7 +41,9 @@ data(){
         answers: [],
         countdown: 0,
         score: 0,
-        timer: null
+        timer: null,
+        category_name: '',
+        category_id: null
     }
 },
 computed: {
@@ -58,7 +54,7 @@ computed: {
         return this.questionCount
     }
 },
-created(){
+mounted(){
     this.showQuestions(0);
     this.countDownTimer();
 },
@@ -92,27 +88,18 @@ methods: {
         return array;
 
     },
-    animateCSS(element, animationName, callback){
-        const node = document.querySelector(element)
-        node.classList.add('animated', animationName)
-
-        function handleAnimationEnd() {
-            node.classList.remove('animated', animationName)
-            node.removeEventListener('animationend', handleAnimationEnd)
-
-            if (typeof callback === 'function') callback()
-        }
-
-        node.addEventListener('animationend', handleAnimationEnd)
+    getImgUrl(cat) {
+        return require('../assets/cat' + cat + '.svg')
     },
     showQuestions(score){
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/stage_one', {sid: localStorage.getItem('sid'), score: score})
         .then((response) => {
+            this.category_id = response.data.question.category_id
+            this.category_name = response.data.question.category_name
             if(this.questionCount < 5){
                 this.question = response.data.question.que_question
                 this.questionCount += 1
-                let answers = response.data.question.answers
-                this.answers = this.shuffle(answers)
+                this.answers = this.shuffle(response.data.question.answers)
                 this.score = response.data.question.score
                 axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/asked_questions', {sid: localStorage.getItem('sid'), stage_one_id: response.data.question.que_id})
                 return
@@ -129,25 +116,23 @@ methods: {
             event.target.style.backgroundColor = 'green'
             event.target.style.color = '#fff'
             this.score += (10 - this.countdown)
-            this.animateCSS('.score', 'heartBeat')
             this.countdown = 0
             setTimeout(() => {
-                event.target.style.backgroundColor = '#e2f3f5'
-                event.target.style.color = 'black'
+                event.target.style.backgroundColor = '#cadbe5'
+                event.target.style.color = '#252b41'
                 this.showQuestions(this.score)
                 }, 1000)
         }else{
             event.target.style.backgroundColor = 'red'
             event.target.style.color = '#fff'
             this.score -= this.countdown
-            this.animateCSS('.score', 'fadeOut')
             if(this.score < 0){
                 this.score = 0
             }
             this.countdown = 0
             setTimeout(() => {
-                event.target.style.backgroundColor = '#e2f3f5'
-                event.target.style.color = 'black'
+                event.target.style.backgroundColor = '#cadbe5'
+                event.target.style.color = '#252b41'
                 this.showQuestions(this.score)
                 }, 1000)
         }   
@@ -156,8 +141,8 @@ methods: {
         if(this.countdown < 10) {
             this.timer = setTimeout( () => {
                 this.countdown += 1
-                document.querySelector('.progress-bar').style.width = (this.countdown*10) + '%';
-                this.countDownTimer(this.score)
+                document.querySelector('.progress-bar2').style.width = `${this.countdown*10}%`;
+                this.countDownTimer()
             }, 1000)
         }else if(this.questionCount < 5){
             this.score -= 5
@@ -166,7 +151,10 @@ methods: {
             }
             this.countdown = 0
             this.countDownTimer()
-            this.showQuestions(this.score)
+            setTimeout(() => {
+                this.showQuestions(this.score)
+            }, 1000)
+            
         }else{
             clearTimeout(this.timer)
             this.timer = null;
@@ -178,333 +166,104 @@ methods: {
 }
 </script>
 
-<style scoped>
-.progress{
-    width: 100%;
-}
-
-.playground{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('../assets/quiz11.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.container{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    max-height: 850px;
-    justify-content: space-around;
-    background-color:  #3a3a3c;
-    box-shadow: 1px 0px 38px 0px #232324;
-    border-radius: 5px;
-}
+<style lang="scss" scoped>
+$tamno_plava: #252b41;
+$svetlo_plava: #2c4058;
+$narandza: #e78230;
+$bela_kao: #cadbe5; 
 
 .wrapper{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 90%;
-    justify-content: flex-end;
-    position: relative;
-}
-
-.wrappGame{
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 85%;
-    width: 100%;
 }
 
-.question{
-    padding: 15px 20px;
-    font-size: 3.5rem;
-    text-align: center;
-    color: #c23131;
-    border-radius: 5px;
-}
 
-.answers_container{
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items:stretch;
-    align-content: space-around;
-    justify-content: space-around;
-    justify-items: stretch;
-    height: 40%;
-}
-
-.answers{
-    text-align: center;
+header{
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
-    transition: ease-in-out .5s;
-    width: 45%;
-    height: 35%;
-    background-color: #e2f3f5;
-    color: black;
-    font-size: 2rem;
+    padding: 1.5em 1.1em;
+    width: 100%;
+    background-color: $tamno_plava;
+    -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+    -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+    box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+        & img{
+            width: 15%;
+            margin-right: 1em;
+        }
+        & h2{
+            font-size: 2.2rem;
+            margin: 0;
+            color: $bela_kao;
+        }
 }
 
-.answers:hover{
-    box-shadow: 0 9px 11px 0 rgba(0, 0, 0, 0.9), 0 10px 26px 0 rgba(0, 0, 0, 1);
-    cursor: pointer;
+
+.progress2 {
+  padding: 3px;
+  margin: 1.2em 0;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.25);  
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
-.score_container{
-    background-color: #3a3a3c;
-    padding: .7em;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    right: .5em;
-    border-radius: 5px;
-    font-family: 'Libre Baskerville', serif;
-    color: #f5eded;
-    font-size: 2rem;
+.progress-bar2 {
+  height: 5px;
+  border-radius: 30px;
+  background-image: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  transition: 0.4s linear;  
+  transition-property: width, background-color;    
 }
 
-.score_container p{
-    margin: 0;
+.progress-moved .progress-bar2 {
+  width: 0%; 
+  background-color: $narandza;  
 }
 
 .score{
-    text-align: center;
-}
-
-.question_count{
-    background-color: #3a3a3c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: .7em;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: .5em;
-    border-radius: 5px;
-    font-family: 'Libre Baskerville', serif;  
-    color: #f5eded;
-    font-size: 2rem;  
+    width: 90%;
+    border-bottom: 1px solid $bela_kao;
+        & p{
+            color: $bela_kao;
+            font-size: 1.2rem;
+            margin: 0;
+                & span{
+                    color: $narandza;
+                }
+        }
 }
 
-.question_count p{
-    margin: 0;
+.question{
+    padding: 1em;
+        & p{
+            color: $bela_kao;
+            font-size: 1.3rem;
+            margin: 0;
+        }
 }
 
-@media screen and (max-width: 349px) {
-.playground{
-    background: url('../assets/quizMini.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
+.answers{
+    padding: 1em;
+    width: 100%;
+    & .answer{
+        padding: .5em 1em;
+        color: $tamno_plava;
+        background-color: $bela_kao;
+        border-radius: 50px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: .5em;
     }
-
-.container{
-    width: 100%;
-    height: 75%;
-}
-
-.wrapper{
-    height: 80%;
-}
-
-.question{
-    padding: 0 10px;
-    font-size: 1.5rem;
-}
-
-.answers_container{
-    width: 100%;
-    height: 45%;
-}
-
-.answers{
-    font-size: .95rem;
-}
-
-.score_container{
-    padding: .4em;
-    top: 0;
-    right: 0;
-    font-size: .8rem;
-}
-
-.question_count{
-    padding: .4em;
-    top: 0;
-    left: 0;
-    font-size: .8rem;
-}
-}
-
-@media screen and (min-width: 350px) and (max-width: 600px){
-.playground{
-    justify-content: center;
-    background: url('../assets/quiz111.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.container{
-    width: 100%;
-    height: 80%;
-    max-height: 650px;
-}
-
-.wrapper{
-    width: 100%;
-    height: 85%;
-}
-
-.question{
-    padding: 0 10px;
-    font-size: 1.8rem;
-}
-
-.answers_container{
-    width: 100%;
-    height: 45%;
-    max-height: 200px;
-}
-
-.answers{
-    font-size: 1.2rem;
-}
-
-.score_container{
-    padding: .3em;
-    top: 0;
-    right: 0;
-}
-
-.score_container p{
-    font-size: 1.1rem;
-}
-
-.question_count{
-    padding: .3em;
-    top: 0;
-    left: 0;
-}
-
-.question_count p{
-    font-size: 1.1rem;
-}  
-}
-
-@media screen and (min-width: 601px) and (max-width: 950px) {
-.progress{
-    width: 100%;
-}
-
-.playground{
-    justify-content: center;
-    background: url('../assets/quiz111.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.container{
-    height: 80%;
-}
-
-.wrapper{
-    height: 85%;
-}
-
-.question{
-    padding: 0 10px;
-    font-size: 2rem;
-}
-
-.answers_container{
-    width: 100%;
-    height: 45%;
-}
-
-.answers{
-    height: 35%;
-    font-size: 1.3rem;
-}
-
-.score_container{
-    padding: .4em;
-    text-align: center;
-    top: 0;
-    right: 0;
-    font-size: 1.3rem;
-}
-
-.question_count{
-    padding: .4em;
-    top: 0;
-    left: 0;  
-    font-size: 1.3rem;
-} 
-}
-
-@media screen and (min-width: 951px) and  (max-width: 1450px){
-.playground{
-    justify-content: center;
-    background: url('../assets/quiz11.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.container{
-    width: 70%;
-    max-width: 850px;
-}
-
-.wrapper{
-    height: 85%;
-}
-
-.question{
-    padding: 0 10px;
-    font-size: 2.5rem;
-}
-
-.answers_container{
-    width: 100%;
-    height: 45%;
-}
-
-.answers{
-    font-size: 1.7rem;
-}
-
-
-.score_container{
-    padding: .4em;
-    top: 0;
-    right: 0;
-    font-size: 1.4rem;
-}
-
-.question_count{
-    padding: .4em;
-    top: 0;
-    left: 0;   
-    font-size: 1.4rem;
-}
-
 }
 </style>

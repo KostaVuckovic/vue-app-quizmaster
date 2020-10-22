@@ -1,46 +1,37 @@
 <template>
-    <div class="wrapperSignUp">
-        <div class="containerSignUp">
+    <div class="wrapper">
+      <div class="container">
 
-            <div class="signUpForm">
-
-                <div class="top">
-                    <h1>Register</h1>
-                  <div class="inputsSignUp">
-                    <label for="nam">First Name</label>
-                    <input type="text" class="nam" v-model="nameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, avatarClick)" >
-                    <label for="las">Last Name</label>
-                    <input type="text" class="las" v-model="lastnameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, avatarClick)" >
-                    <label for="usr">Username</label>
-                    <input type="text" class="usr" v-model="usernameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, avatarClick)" >
-                    <label for="psw">Password</label>
-                    <input type="password" class="psw" v-model="passwordModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, avatarClick)" >
-                  </div>
-                    
-                </div>
-
-                <div class="bottom">
-                   <p class="selectAvatar">select avatar</p>
-                  <div class="avatarsWrap">
-                  <div class="avatars" v-for="a in avatars" :key="a.ava_id"  @click="selectAvatar(a.ava_id)">
-                    <img :class="{clickedA:a.ava_id == avatarClick}" :src="'http://051b122.mars-e1.mars-hosting.com/quiz/avatar/'+ a.ava_id +'/avatar'" alt="">
-                  </div>
-                  
-                </div>
-
-                <div class="msg">
-                  <p>{{MSG}}</p>
-                </div>
-
-                <div class="footerSignUp">
-                    <button class="action-button shadow animate green"  @click="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, avatarClick)">Done</button>
-                    <p>You already have an account? <span class="goLog" @click="goLog()">Log In</span></p>
-                </div>
-                </div>
-
-            </div>
-
+        <h1>Register</h1>
+        <!-- inputs -->
+        <label for="nam">First Name</label>
+        <input type="text" class="nam" v-model="nameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)" >
+        <label for="las">Last Name</label>
+        <input type="text" class="las" v-model="lastnameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)" >
+        <label for="usr">Username</label>
+        <input type="text" class="usr" v-model="usernameModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)" >
+        <label for="psw">Password</label>
+        <input type="password" class="psw" v-model="passwordModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)" >
+        <!-- inputs end -->
+        <label for="gender">Select gender</label>
+        <div class="genders">
+          <div class="radio">
+            <input id="r1" type="radio" name="radio" value="1" v-model="gender">
+            <label for="r1">Male</label>
+            <div class="check"></div>
+          </div>
+          
+          <div class="radio">
+            <input id="r2" type="radio" name="radio" value="2" v-model="gender">
+            <label for="r2">Female</label>
+            <div class="check"></div>
+          </div>
+          
         </div>
+        <button class="btn" @click="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)">SIGN UP</button>
+        <p class="login">Or <span @click="goLogin">log in?</span></p>
+        <p style="color: white" class="msg">{{msg}}</p>
+      </div>
     </div>
 </template>
 
@@ -58,13 +49,8 @@ export default {
       usernameModelLog: '',
       passwordModelLog: '',
       msg: '',
-      avatars: [],
-      avatarClick: undefined
-
+      gender: null
     }
-  },
-  mounted(){
-    this.getAvatars()
   },
   computed: {
     MSG(){
@@ -72,15 +58,6 @@ export default {
     }
   },
   methods: {
-    selectAvatar(avatar_id){
-      this.avatarClick = avatar_id
-    },
-    getAvatars(){
-        axios.get('http://051b122.mars-e1.mars-hosting.com/quiz/engine/getAvatars')
-        .then((response) => {
-          this.avatars = response.data.data
-        })
-    },
     animateCSS(element, animationName, callback){
         const node = document.querySelector(element)
         node.classList.add('animated', animationName)
@@ -95,9 +72,9 @@ export default {
         node.addEventListener('animationend', handleAnimationEnd)
 
     },
-    createAcc(name,lastname,username, password, avatar){
+    createAcc(name,lastname,username, password, gender){
 
-      if(!/^\w+$/.test(name) && !/^\w+$/.test(lastname) && !/^\w+$/.test(username) && !/^\w+$/.test(password) && avatar == undefined){
+      if(!/^\w+$/.test(name) && !/^\w+$/.test(lastname) && !/^\w+$/.test(username) && !/^\w+$/.test(password) && gender == null){
         let mess = document.querySelector('.msg');
         mess.style.visibility = "visible";
         this.animateCSS('.msg', 'shake');
@@ -142,22 +119,22 @@ export default {
         return
       }
 
-      if(avatar == undefined){
+      if(gender == null){
         let mess = document.querySelector('.msg');
         mess.style.visibility = "visible";
         this.animateCSS('.msg', 'shake');
-        this.msg = 'You must choose avatar.';
+        this.msg = 'You must choose gender.';
         return
       }
 
-      axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/auth/signup', {name:name, lastname:lastname, username: username, password: password, avatar: avatar})
+      axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/auth/signup', {name, lastname, username, password, avatar: gender})
       .then((response) => {
         if(response.data.msg){
           this.nameModel = '';
           this.lastnameModel = '';
           this.usernameModel = '';
           this.passwordModel = '';
-          this.avatarClick = undefined;
+          this.gender = null;
           this.msg = response.data.msg + ' Redirecting to login page...';
           let mess = document.querySelector('.msg');
           mess.style.visibility = "visible";
@@ -177,534 +154,110 @@ export default {
         console.log(r)
       })
 	},
-	goLog(){
+	goLogin(){
 		this.$router.push({name: 'Login'})
 	}
   }
 }
 </script>
 
-<style scoped>
-.wrapperSignUp{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 930px;
-    height: 100vh;
-    box-sizing: border-box;
-    background: url('../assets/quiz11.jpg') repeat center center fixed;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
+<style lang="scss" scoped>
+$tamno_plava: #252b41;
+$svetlo_plava: #2c4058;
+$narandza: #e78230;
+$bela_kao: #cadbe5; 
+
+@keyframes containerDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: 75%;
+  }
 }
 
-.containerSignUp{
+.wrapper{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  flex-direction: column;
-  border: 2px solid lightgray;
-  height: 100%;
-  max-height: 900px;
-  width: 40%;
-  max-width: 680px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
-  background-color: white;
+  min-height: 100vh;
+    & .container{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      animation-duration: 2s;
+      animation-name: containerDown;
+      animation-fill-mode: forwards;  
+      transition: height 2s;
+      padding: 1.5em;
+      width: 85%;
+      border: 2px solid $narandza;
+      background-color: $svetlo_plava;
+      border-radius: 10px;
+        & h1{
+          color: $bela_kao;
+          font-size: 2.5rem;
+          text-align: center;
+        }
+        & label{
+          color: $bela_kao;
+          margin: .5em 0 0 0;
+        }
+        & input[type="text"], input[type="password"]{
+          border-radius: 5px;
+          border: 1px solid $tamno_plava;
+          padding: .3em .5em;
+        }
+        & .btn{
+          background-color: $narandza;
+          border-radius: 10px;
+          border: 1px solid $narandza;
+          padding: .5em 3em;
+          color: $bela_kao;
+          font-size: 1rem;
+          font-weight: 500;
+          margin-top: 1.5em;
+        }
+    }
 }
 
-.containerSignUp h1 {
+// input[type="radio"]{
+//   position: absolute;
+//   visibility: hidden;
+// }
+
+// .genders{
+//   display: flex;
+//   justify-content: space-between;
+//     & .radio{
+//       padding: .5em;
+//         & .check{
+//           display: block;
+//           position: absolute;
+//           border: 5px solid #AAAAAA;
+//           border-radius: 100%;
+//           height: 25px;
+//           width: 25px;
+//           top: 30px;
+//           left: 20px;
+//           z-index: 5;
+//           transition: border .25s linear;
+//           transition: border .25s linear;
+//         }
+//     }
+//     & label{
+//       cursor: pointer;
+//       transition: all 0.25s linear;
+//     }
+  
+// }
+
+.login{
+  color: $bela_kao;
   text-align: center;
-  font-size: 6rem;
-  margin: 10px 0 5px 0;
-  font-weight: 800;
-}
-
-.signUpForm{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 80%;
-  height: 100%;
-}
-
-.signUpForm p{
-  text-align: center;
-}
-
-.top{
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-}
-
-.bottom{
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.avatarsWrap{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 20%;
-}
-
-.avatars {
-  width: 15%;
-  height: 100%;
-  position: relative;
-}
-
-.avatars:hover{
-  cursor: pointer;
-}
-
-.avatars img{
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 10px;
-  max-height: 100px;
-  height: 100%;
-  transition: .1s ease;
-}
-
-.selectAvatar{
-  font-size: 1.6rem;
-  margin: 10px 0 0 0;
-}
-
-.clickedA{
-  border: 3px solid green;
-  opacity: 0.7;
-}
-
-.animate{
-	transition: all 0.1s;
-	-webkit-transition: all 0.1s;
-}
-
-.action-button{
-  font-family: 'Press Start 2P', cursive;
-  height: 37%;
-  padding: 0 15px;
-	border-radius: 10px;
-	font-size: 20px;
-	color: #FFF;
-	text-decoration: none;	
-  border: none;
-}
-
-.action-button:hover{
-  cursor: pointer;
-}
-
-.action-button:focus{
-  outline: none;
-}
-
-.green{
-	background-color: #82BF56;
-	border-bottom: 5px solid #669644;
-	text-shadow: 0px -2px #669644;
-}
-
-.action-button:active{
-	transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
-	border-bottom: 1px solid;
-}
-
-.inputsSignUp{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 65%;
-}
-
-.inputsSignUp label{
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-.goLog{
-	color: rgb(51, 51, 255);
-}
-
-.goLog:hover{
-	cursor: pointer;
-}
-
-input[type=text], input[type=password]{
-  padding: 3px 15px; 
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  font-size: 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(255, 255, 255);
-}
-
-input[type=text]:focus {
-  border: 1px solid rgb(126, 125, 125);
-  outline: none;
-}
-
-input[type=password]:focus {
-  border: 1px solid rgb(126, 125, 125);
-  outline: none;
-}
-
-.footerSignUp{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-  height: 40%;
-}
-
-.footerSignUp p{
-    font-size: 1.6rem;
-    box-sizing: border-box;
-}
-
-.msg{
-  box-sizing: border-box;
-  width: 100%;
-  visibility: hidden;
-  text-align: center;
-  height: 30px;
-}
-
-.msg p{
-  margin: 0;
-  color: red;
-  font-size: 1.6rem;
-}
-
-@media screen and (max-width: 349px){
-  .wrapperSignUp{
-  min-height: 550px;
-  background: url('../assets/quiz1.jpg') repeat center center fixed;
-  background-size: cover;
-}
-
-.containerSignUp{
-  border: 1px solid lightgray;
-  width: 90%;
-  max-height: 600px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
-}
-
-.containerSignUp h1 {
-  font-size: 3.2rem;
-  margin: 20px 0 10px 0;
-}
-
-.signUpForm{
-  width: 90%;
-  height: 100%;
-}
-
-.avatarsWrap{
-  height: 20%;
-}
-
-.avatars {
-  width: 17%;
-  height: 100%;
-}
-
-.avatars img{
-  width: 100%;
-  max-height: 100px;
-  height: 100%;
-}
-
-.selectAvatar{
-  font-size: 1rem;
-}
-
-.action-button{
-  border: none;
-  padding: 0 10px;
-	font-size: 12px;
-  height: 40%;	
-}
-
-.inputsSignUp{
-  height: 65%;
-}
-
-.inputsSignUp label{
-  font-size: 1rem;
-}
-
-.goLog{
-	color: blue;
-	font-weight: bold;
-}
-
-input[type=text], input[type=password]{
-  padding: 4px 7px; 
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.footerSignUp p{
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-.msg{
-  width: 100%;
-  height: 10px;
-}
-
-.msg p{
-  font-size: 1rem;
-}
-}
-
-@media screen and (min-width: 350px) and (max-width: 600px){
-.wrapperSignUp{
-  min-height: 720px;
-  background: url('../assets/quiz1.jpg') repeat center center fixed;
-  background-size: cover;
-}
-
-.containerSignUp{
-    border: 1px solid lightgray;
-    max-height: 630px;
-    width: 90%;
-    max-width: 380px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
-}
-
-.containerSignUp h1 {
-  font-size: 3.8rem;
-	margin: 27px 0 20px 0;
-}
-
-.signUpForm{
-    width: 90%;
-    height: 100%;
-}
-
-.avatarsWrap{
-  height: 20%;
-}
-
-.avatars {
-  width: 17%;
-  height: 100%;
-}
-
-.avatars img{
-  width: 100%;
-  max-height: 100px;
-  height: 100%;
-}
-
-.selectAvatar{
-  font-size: 1.1rem;
-}
-
-.clickedA{
-  border: 3px solid green;
-}
-
-.action-button{
-  padding: 0 10px;
-	font-size: 1rem;	
-}
-
-.inputsSignUp{
-  height: 60%;
-}
-
-.inputsSignUp label{
-  font-size: 1rem;
-}
-
-.goLog{
-	color: blue;
-  padding: 3px;
-}
-
-.goLog:hover{
-	cursor: pointer;
-}
-
-input[type=text], input[type=password]{
-    padding: 3px 10px; 
-    border-radius: 5px;
-    font-size: 1.2rem;
-}
-
-.footerSignUp p{
-    font-size: 1rem;
-}
-
-.msg{
-  height: 10px;
-}
-
-.msg p{
-  font-size: 1.1rem;
-}
-}
-
-@media screen and (min-width: 601px) and (max-width: 950px){
-.wrapperSignUp{
-  background: url('../assets/quiz111.jpg') repeat center center fixed;
-  background-size: cover;
-}
-
-.containerSignUp{
-  border: 1px solid lightgray;
-  height: 85%;
-  width: 75%;
-  max-width: 540px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
-}
-
-.containerSignUp h1 {
-  font-size: 5.8rem;
-  margin: 20px 0;
-}
-
-.signUpForm{
-  width: 90%;
-  height: 100%;
-}
-
-.avatars {
-  width: 16%;
-  height: 100%;
-}
-
-.avatars img{
-  width: 100%;
-  height: 100%;
-}
-
-.selectAvatar{
-  font-size: 1.6rem;
-  margin: 12px 0;
-}
-
-.action-button{
-  padding: 0 15px;
-	font-size: 1.3rem;
-}
-
-.inputsSignUp label{
-  font-size: 1.6rem;
-}
-
-.goLog{
-	color: blue;
-  padding: 3px;
-}
-
-input[type=text], input[type=password]{
-    padding: 5px 10px;
-    font-size: 1.4rem;
-}
-
-.msg{
-  width: 100%;
-  height: 35px;
-}
-
-.msg p{
-  font-size: 1.6rem;
-}
-
-.footerSignUp p{
-  font-size: 1.4rem;
-}
-}
-
-@media screen and (min-width: 951px) and (max-width: 1450px){
-  .wrapperSignUp{
-  height: 100vh;
-  min-height: 600px;
-}
-
-.containerSignUp{
-  border: 1px solid lightgray;
-  width: 55%;
-  border-radius: 5px;
-  max-width: 480px;
-  max-height: 600px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
-}
-
-.containerSignUp  h1 {
-  font-size: 4.5rem;
-  margin: 7px 0 10px 0;
-}
-
-.signUpForm{
-  width: 85%;
-  height: 100%;
-}
-
-.avatars img{
-  width: 100%;
-  max-height: 100px;
-  height: 100%;
-}
-
-.selectAvatar{
-  font-size: 1.2rem;
-  margin: 10px 0;
-}
-
-.action-button{
-  padding: 0 .9em;
-	border-radius: 10px;
-	font-size: 1rem;
-	color: #FFF;
-	text-decoration: none;	
-}
-
-.inputsSignUp{
-  height: 68%;
-}
-
-.inputsSignUp label{
-  font-size: 1rem;
-}
-
-.goLog{
-  color: rgb(51, 51, 255);
-}
-
-input[type=text], input[type=password]{
-    padding: 2px 10px; 
-    font-size: 1rem;
-}
-
-.footerSignUp p{
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-.msg{
-  width: 100%;
-}
-
-.msg p{
-  font-size: 1.2rem;
-}
+    & span{
+      color: $narandza;
+    }
 }
 </style>

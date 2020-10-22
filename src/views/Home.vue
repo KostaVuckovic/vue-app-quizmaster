@@ -1,11 +1,11 @@
 <template>
   <div class="home">
 
-    <div class="header">
+    <header>
       <h2>Quiz <span>Master</span></h2>
         <img id="img" class="img" src="../assets/quiz_bg2.svg" alt="quiz">
         <button id="leaderboardBtn" class="leaderboardBtn" >LEADERBOARD</button>
-    </div>
+    </header>
 
     <div class="buttons">
       <button class="btn" @click="signUp()">SIGN UP</button>
@@ -61,7 +61,7 @@ $bela_kao: #cadbe5;
   }
 }
 
-.header{
+header{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
