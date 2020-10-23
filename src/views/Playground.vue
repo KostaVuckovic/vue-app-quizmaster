@@ -179,7 +179,6 @@ $bela_kao: #cadbe5;
     flex-direction: column;
 }
 
-
 header{
     display: flex;
     justify-content: center;
