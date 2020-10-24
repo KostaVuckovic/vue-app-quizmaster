@@ -19,6 +19,10 @@
         <p>{{question.que_question}}</p>
     </div>
 
+    <div class="answer-check">
+
+    </div>
+
     <div class="answer">
         <input type="text" class="answer-input" v-model="answerModel" @keyup.enter="sendAnswer(answerModel, question.que_id)">
         <button @click="sendAnswer(answerModel, question.que_id)">SUBMIT</button>
@@ -136,34 +140,34 @@ methods: {
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/answer_check', {sid: sid, answer: ans, id: id })
         .then((response) => {
             if(response.data.check === 'CORRECT'){
-                document.querySelector('.correct').style.display = 'block'
-                document.querySelector('.correct').classList.add('activeSign')
+                // document.querySelector('.correct').style.display = 'block'
+                // document.querySelector('.correct').classList.add('activeSign')
                 this.score += 5;
-                this.animateCSS('.score', 'heartBeat')
+                // this.animateCSS('.score', 'heartBeat')
                 
                 setTimeout(() => {
-                    document.querySelector('.correct').style.display = 'none'
-                    document.querySelector('.correct').classList.remove('activeSign')
+                    // document.querySelector('.correct').style.display = 'none'
+                    // document.querySelector('.correct').classList.remove('activeSign')
                     this.countdown = 0
                     this.showQuestions(this.score)
-                }, 1600)
+                }, 1000)
                 this.answerModel = ''
             }else{
-                document.querySelector('.wrong').style.display = 'block'
-                document.querySelector('.wrong').innerHTML = response.data.answer
-                document.querySelector('.wrong').classList.add('activeSign')
-                this.animateCSS('.score', 'fadeOut')
+                // document.querySelector('.wrong').style.display = 'block'
+                // document.querySelector('.wrong').innerHTML = response.data.answer
+                // document.querySelector('.wrong').classList.add('activeSign')
+                // this.animateCSS('.score', 'fadeOut')
                 this.score -= 5;
                 if(this.score < 0){
                     this.score = 0
                 }
                 
                 setTimeout(() => {
-                    document.querySelector('.wrong').style.display = 'none'
-                    document.querySelector('.wrong').classList.remove('activeSign')
+                    // document.querySelector('.wrong').style.display = 'none'
+                    // document.querySelector('.wrong').classList.remove('activeSign')
                     this.countdown = 0
                     this.showQuestions(this.score)
-                }, 1600)
+                }, 1000)
                 this.answerModel = ''
             }
         })
@@ -172,7 +176,7 @@ methods: {
         if(this.countdown < 20) {
             this.timer = setTimeout( () => {
                 this.countdown += 1
-                document.querySelector('.progress-bar').style.width = (this.countdown*5) + '%';
+                document.querySelector('.progress-bar2').style.width = (this.countdown*5) + '%';
                 this.countDownTimer(this.score)
             }, 1000)
         }else if(this.questionCount < 5){
@@ -277,6 +281,10 @@ header{
         }
 }
 
+.answer-check{
+    
+}
+
 .answer{
     display: flex;
     flex-direction: column;
@@ -288,7 +296,7 @@ header{
             border: 2px solid $narandza;
             background-color: $bela_kao;
             margin-bottom: 1em;
-                & :focus{
+                &:focus{
                     outline: none;
                 }
         }
@@ -299,7 +307,7 @@ header{
             padding: .5em 0;
             font-weight: 500;
             border: none;
-                & :focus{
+                &:focus{
                     outline: none;
                 }
         }

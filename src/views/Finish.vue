@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="container">
+    <div class="trophy">
+      <img src="../assets/trophy.svg" alt="trophy">
+      <h2>Congrats!</h2>
+    </div>
+    <!-- <div class="container">
 
       <div class="usersScoreWrap">
         <h1>Your score is <span class="usersScore line-1 anim-typewriter">{{SCORE}}</span> </h1>
@@ -18,7 +22,7 @@
           <div class="score" v-for="s in ALLSCORES" :key="s.usr_id"><span>{{s.user_username}}</span> <span>{{s.best_score}}</span> </div>
         </div>
       </div>
-    </div>
+    </div> -->
     
   </div>
 </template>
@@ -90,7 +94,32 @@ methods: {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$tamno_plava: #252b41;
+$svetlo_plava: #2c4058;
+$narandza: #e78230;
+$bela_kao: #cadbe5; 
 
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.trophy{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+    & img{
+      width: 50%;
+    }
+    & h2{
+      color: $narandza
+    }
+}
 </style>
 
