@@ -185,7 +185,7 @@ header{
     align-items: center;
     padding: 1.5em 1.1em;
     width: 100%;
-    background-color: $tamno_plava;
+    background-color: $svetlo_plava;
     -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
     -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
     box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);

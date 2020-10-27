@@ -1,28 +1,32 @@
 <template>
   <div class="wrapper">
+
+    <header>
+        <img src="../assets/flag.svg" alt="flag">
+        <h2>Finish</h2>
+    </header>
+
     <div class="trophy">
-      <img src="../assets/trophy.svg" alt="trophy">
-      <h2>Congrats!</h2>
+     
+      <h2 v-if="this.score = 0">I'm sorry.</h2>
+      <h2 v-else>Congrats!</h2>
+
+      <img src="../assets/depression.svg" alt="trophy" v-if="this.score = 0">
+      <img src="../assets/trophy.svg" alt="trophy" v-else>
+
+      <p>Your score is <span>{{SCORE}}</span></p>
     </div>
-    <!-- <div class="container">
 
-      <div class="usersScoreWrap">
-        <h1>Your score is <span class="usersScore line-1 anim-typewriter">{{SCORE}}</span> </h1>
-      </div>
+    <div class="buttons">
+      <button class="play-again" @click="playAgain"><font-awesome-icon :icon="['fas', 'redo-alt']" /></button>
+      <button id="leaderboardBtn" class="leaderboardBtn" @click="showLeaderboard">LEADERBOARD</button>
+    </div>
 
-      <div class="buttons">
-        <button @click="playAgain"><span class="material-icons">play_circle_outline</span> <span>Play again</span></button>
-        <button @click="logout"><span class="material-icons">exit_to_app</span> <span>Logout</span></button>
-        
-      </div>
-
-      <div class="leaderbord">
-        <h1>Top 10 scores</h1>
-        <div class="scoreWrapper">
-          <div class="score" v-for="s in ALLSCORES" :key="s.usr_id"><span>{{s.user_username}}</span> <span>{{s.best_score}}</span> </div>
-        </div>
-      </div>
-    </div> -->
+    <Leaderboard v-show="leaderboardVisible" @close="closeLeaderboard">
+      <template name="score">
+        <div class="score" v-for="score in ALLSCORES" :key="score.usr_id"><p>{{score.user_username}}</p> <p>{{score.best_score}}</p></div>
+      </template>  
+    </Leaderboard>  
     
   </div>
 </template>
@@ -30,18 +34,23 @@
 <script>
 import axios from 'axios'
 import _ from 'lodash'
+import Leaderboard from '../components/Leaderboard.vue'
 
 export default {
 name: 'Finish',
+components: {
+  Leaderboard
+},
 data(){
     return {
         score: null,
-        scores: []
+        scores: [],
+        leaderboardVisible: false
     }
 },
 created(){
   this.showScore();
-  this.addScore()
+  this.addScore();
 },
 computed: {
     SCORE(){
@@ -89,6 +98,12 @@ methods: {
   },
   playAgain(){
     this.$router.push({name: 'Categories'})
+  },
+  showLeaderboard(){
+    this.leaderboardVisible = true
+  },
+  closeLeaderboard(){
+    this.leaderboardVisible = false
   }
 }
 }
@@ -105,21 +120,99 @@ $bela_kao: #cadbe5;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+    & header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5em 1.1em;
+      width: 100%;
+      background-color: $svetlo_plava;
+      border-radius: 0 0 40px 40px;
+      -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+      -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+      box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+        & img{
+            width: 15%;
+            margin-right: 1em;
+        }
+        & h2{
+            font-size: 2.2rem;
+            margin: 0;
+            color: $bela_kao;
+        }
+    }
+    & .trophy{
+        width: 100%;
+        margin-top: 1.2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+          & img{
+            width: 50%;
+            margin: 1em 0;
+          }
+          & h2{
+            color: $narandza;
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+          }
+          p{
+            color: $bela_kao;
+            font-size: 2rem;
+              & span{
+                color: $narandza;
+                font-weight: 500;
+              }
+          }
+      }
+      & .buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        & .play-again{
+          border-radius: 50%;
+          font-size: 1.9rem;
+          border: none;
+          text-align: center;
+          margin-bottom: 1em;
+          vertical-align: middle;
+          padding: .2em .4em;
+            &:focus{
+              outline: none;
+            }
+        }
+        & .leaderboardBtn{
+          background-color: $narandza;
+          border-radius: 20px;
+          border: 1px solid $narandza;
+          padding: .9em 3em;  
+          width: 85%;
+          max-width: 300px;
+          color: $bela_kao;
+          font-size: 1rem;
+          font-weight: 500;
+            &:focus{
+              outline: none;
+            }
+          // margin: 1.2em 0;
+        }
+      }
+      & .score{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .3em;
+          & p{
+            margin: 0;
+          }
+      }
 }
 
-.trophy{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-    & img{
-      width: 50%;
-    }
-    & h2{
-      color: $narandza
-    }
-}
+
 </style>
 

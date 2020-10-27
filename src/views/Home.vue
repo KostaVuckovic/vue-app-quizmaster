@@ -3,15 +3,15 @@
 
     <header>
       <h2>Quiz <span>Master</span></h2>
-        <img id="img" class="img" src="../assets/quiz_bg2.svg" alt="quiz">
-        <button id="leaderboardBtn" class="leaderboardBtn" >LEADERBOARD</button>
+      <img id="img" class="img" src="../assets/quiz_bg2.svg" alt="quiz">
+      <button id="leaderboardBtn" class="leaderboardBtn" >LEADERBOARD</button>
     </header>
 
     <div class="buttons">
       <button class="btn" @click="signUp()">SIGN UP</button>
       <button class="btn" @click="signIn()">SIGN IN</button>
     </div>
-
+    
   </div>
 </template>
 
@@ -95,7 +95,7 @@ header{
     & .img{
       width: 75%;
       max-width: 300px;
-      margin: 3em 0;
+      // margin: 3em 0;
       animation-duration: 2s;
       animation-name: opacityAnimation;
       animation-delay: 2s;
@@ -117,7 +117,7 @@ header{
       color: $bela_kao;
       font-size: 1rem;
       font-weight: 500;
-      margin: 1.2em 0;
+      // margin: 1.2em 0;
     } 
 }
 

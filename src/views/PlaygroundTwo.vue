@@ -140,31 +140,20 @@ methods: {
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/answer_check', {sid: sid, answer: ans, id: id })
         .then((response) => {
             if(response.data.check === 'CORRECT'){
-                // document.querySelector('.correct').style.display = 'block'
-                // document.querySelector('.correct').classList.add('activeSign')
                 this.score += 5;
-                // this.animateCSS('.score', 'heartBeat')
                 
                 setTimeout(() => {
-                    // document.querySelector('.correct').style.display = 'none'
-                    // document.querySelector('.correct').classList.remove('activeSign')
                     this.countdown = 0
                     this.showQuestions(this.score)
                 }, 1000)
                 this.answerModel = ''
             }else{
-                // document.querySelector('.wrong').style.display = 'block'
-                // document.querySelector('.wrong').innerHTML = response.data.answer
-                // document.querySelector('.wrong').classList.add('activeSign')
-                // this.animateCSS('.score', 'fadeOut')
                 this.score -= 5;
                 if(this.score < 0){
                     this.score = 0
                 }
                 
                 setTimeout(() => {
-                    // document.querySelector('.wrong').style.display = 'none'
-                    // document.querySelector('.wrong').classList.remove('activeSign')
                     this.countdown = 0
                     this.showQuestions(this.score)
                 }, 1000)
@@ -217,7 +206,7 @@ header{
     align-items: center;
     padding: 1.5em 1.1em;
     width: 100%;
-    background-color: $tamno_plava;
+    background-color: $svetlo_plava;
     -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
     -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
     box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
@@ -234,7 +223,7 @@ header{
 
 .progress2 {
   padding: 3px;
-  margin: 1.2em 0;
+  margin: 1.5em 0;
   border-radius: 30px;
   background: rgba(0, 0, 0, 0.25);  
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
@@ -282,7 +271,8 @@ header{
 }
 
 .answer-check{
-    
+    width: 100%;
+    height: 100px;
 }
 
 .answer{
@@ -290,8 +280,9 @@ header{
     flex-direction: column;
     width: 100%;
     padding: 1em;
+    margin-top: 1em;
         & input[type="text"]{
-            padding: .3em .5em;
+            padding: .4em .8em;
             border-radius: 50px;
             border: 2px solid $narandza;
             background-color: $bela_kao;
