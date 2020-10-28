@@ -18,7 +18,6 @@
           <img :src="avatarImage(score.ava_id)" alt="">
           <p class="lead-username">{{score.user_username}}</p> 
           <p class="lead-score">{{score.best_score}}</p></div>
-
       </template>  
     </Leaderboard>  
 
@@ -75,6 +74,40 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5;
 
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 769px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}
+
+@keyframes sectionDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: 75%;
+  }
+}
+
+@keyframes opacityAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .home{
   display: flex;
   justify-content: space-between;
@@ -88,7 +121,7 @@ $bela_kao: #cadbe5;
       justify-content: space-between;
       align-items: center;
       background-color: $svetlo_plava;
-      padding: 1.5em 0;
+      padding: 1.4em 0;
       width: 100%;
       animation-duration: 2s;
       animation-name: sectionDown;
@@ -109,6 +142,12 @@ $bela_kao: #cadbe5;
           opacity: 0;
           font-weight: 500;
           letter-spacing: -1px;
+          @include phone { 
+              font-size: 4rem;
+            }
+          @include tablet{
+            font-size: 5rem;
+          }
             & span{
               color: $narandza;
             }
@@ -121,6 +160,12 @@ $bela_kao: #cadbe5;
           animation-delay: 2s;
           animation-fill-mode: forwards;  
           opacity: 0;
+          @include phone{
+            max-width: 450px;
+          }
+          @include tablet{
+            max-width: 580px;
+          }
         }
         & .leaderboardBtn{
           background-color: $narandza;
@@ -137,6 +182,16 @@ $bela_kao: #cadbe5;
           color: $bela_kao;
           font-size: 1rem;
           font-weight: 500;
+          @include phone{
+            font-size: 1.2rem;
+            max-width: 350px;
+            padding: .6em .2em;
+          }
+          @include tablet{
+            font-size: 1.4rem;
+            max-width: 450px;
+            padding: .6em .2em;
+          }
             &:focus{
               outline: none;
             }
@@ -160,6 +215,16 @@ $bela_kao: #cadbe5;
           font-size: 1rem;
           font-weight: 500;
           margin-bottom: 10px;
+          @include phone{
+            font-size: 1.2rem;
+            max-width: 350px;
+            padding: .6em .2em;
+          }
+          @include tablet{
+            font-size: 1.4rem;
+            max-width: 450px;
+            padding: .6em .2em;
+          }
         }
     }
     & .score{
@@ -201,22 +266,5 @@ $bela_kao: #cadbe5;
       }
 }
 
-@keyframes sectionDown {
-  from {
-    height: 0;
-  }
-  to {
-    height: 75%;
-  }
-}
-
-@keyframes opacityAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 </style>
