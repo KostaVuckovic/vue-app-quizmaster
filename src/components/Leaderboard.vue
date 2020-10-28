@@ -4,7 +4,7 @@
       <div class="container">
         <header>
           <h2>Top 10 players</h2>
-          <button @click="close"><font-awesome-icon :icon="['fas', 'times']" /></button>
+          <button @click="close">&times;</button>
         </header>
 
         <div class="scores">
@@ -40,14 +40,15 @@ $bela_kao: #cadbe5;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease;
     & .container{
-      background-color: $bela_kao;
+      background-color: $tamno-plava;
       padding: 1em;
+      border-radius: 15px;
         & header{
           display: flex;
           justify-content: space-between;
@@ -55,11 +56,14 @@ $bela_kao: #cadbe5;
           margin-bottom: 1em;
             & h2{
               margin: 0;
+              color: $bela_kao;
             }
             & button{
               border: none;
               font-size: 1.5rem;
               background: transparent;
+              font-weight: 500;
+              color: $bela_kao;
                 &:focus{
                   outline: none;
                 }

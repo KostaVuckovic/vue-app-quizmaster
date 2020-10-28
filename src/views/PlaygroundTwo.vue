@@ -27,45 +27,6 @@
         <input type="text" class="answer-input" v-model="answerModel" @keyup.enter="sendAnswer(answerModel, question.que_id)">
         <button @click="sendAnswer(answerModel, question.que_id)">SUBMIT</button>
     </div>
-
-
-
-
-
-
-      <!-- <div class="container">
-        <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-
-        <div class="wrapper">
-            <div class="score_container">
-                <p>SCORE:</p>
-                <p class="score">{{SCORE}}</p>
-            </div>
-            <div class="question_count">
-                <p>QUESTS:</p>
-                <p class="quest">{{QUESTS}}/5</p>
-            </div>
-
-            <div class="wrappGame">
-                <div class="question">
-                    <p>{{question.que_question}}</p>
-                </div>
-                <div class="signs">
-                    <span class="correct material-icons">check_circle_outline</span>
-                    <span class="wrong"></span>
-                </div>
-
-                <div class="answer">
-                    <input type="text" v-model="answerModel" @keyup.enter="sendAnswer(answerModel, question.que_id)" placeholder="Your answer">
-                    <button class="action-button shadow animate green" @click="sendAnswer(answerModel, question.que_id)">Done</button>
-                </div>
-            </div>  
-        
-        </div>
-
-      </div> -->
     
   </div>
 </template>
@@ -127,7 +88,10 @@ methods: {
             }else{ 
                 clearTimeout(this.timer)
                 this.countdown = 0  
-                this.$router.push({name: 'Finish'})   
+                axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/score', {sid:sid})
+                .then(() => {
+                    this.$router.push({name: 'Finish'})  
+                }) 
             }
         })
     },

@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
       <header>
-          <h2>Quiz <span>Master</span></h2>
-          <img :src="avatarImage(this.gender)" alt="">
+          <h2 @click="goHome()">Quiz <span>Master</span></h2>
+          <img :src="avatarImage(this.gender)" alt="avatar" v-if="this.gender">
       </header>
 
       <h3>Choose a category</h3>
@@ -21,9 +21,9 @@
         <template #body>
 
             <div class="infoModal">
-                <p><span class="spanUser">Name:</span> {{USERNAME}} </p>
-                <p><span class="spanUser">Lastname:</span> {{USERLASTNAME}} </p>
-                <p><span class="spanUser">Username:</span> {{USERUSERNAME}} </p>
+                <p><span class="spanUser">Name:</span> {{userName}} </p>
+                <p><span class="spanUser">Lastname:</span> {{userLastname}} </p>
+                <p><span class="spanUser">Username:</span> {{userUsername}} </p>
             </div>
             
         </template>
@@ -44,7 +44,7 @@ data(){
     return{
         categories: [],
         isModalVisible: false,
-        gender: 1,
+        gender: null,
         userName: null,
         userUsername: null,
         userLastname: null
@@ -64,17 +64,17 @@ beforeRouteEnter (to, from, next) {
       next('/login')
   })
 },
-computed: {
-    USERNAME(){
-        return this.userName;
-    },
-    USERLASTNAME(){
-        return this.userLastname;
-    },
-    USERUSERNAME(){
-        return this.userUsername;
-    }
-},
+// computed: {
+//     USERNAME(){
+//         return this.userName;
+//     },
+//     USERLASTNAME(){
+//         return this.userLastname;
+//     },
+//     USERUSERNAME(){
+//         return this.userUsername;
+//     }
+// },
 methods:{
     getInfoForUser(){
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/getInfoForUserModal', {sid: localStorage.getItem('sid')})
@@ -118,6 +118,9 @@ methods:{
         .then(() => {
             this.$router.push({name: 'Playground'})
         })
+    },
+    goHome(){
+        this.$router.push({name: 'Home'})
     }
 }
 }
@@ -171,7 +174,7 @@ $bela_kao: #cadbe5;
             & .category{
                 display: flex;
                 align-items: center;
-                width: 85%;
+                width: 90%;
                 margin: .5em 0;
                 background-color: $svetlo_plava;
                 color: $bela_kao;

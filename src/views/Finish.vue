@@ -2,16 +2,20 @@
   <div class="wrapper">
 
     <header>
+      <div class="finish">
         <img src="../assets/flag.svg" alt="flag">
         <h2>Finish</h2>
+      </div>
+      <img :src="avatarImage(this.avatar)" alt="avatar" v-if="this.avatar">
+        
     </header>
 
     <div class="trophy">
      
-      <h2 v-if="this.score = 0">I'm sorry.</h2>
+      <h2 v-if="this.score == 0">I'm sorry.</h2>
       <h2 v-else>Congrats!</h2>
 
-      <img src="../assets/depression.svg" alt="trophy" v-if="this.score = 0">
+      <img src="../assets/depression.svg" alt="trophy" v-if="this.score == 0">
       <img src="../assets/trophy.svg" alt="trophy" v-else>
 
       <p>Your score is <span>{{SCORE}}</span></p>
@@ -24,7 +28,11 @@
 
     <Leaderboard v-show="leaderboardVisible" @close="closeLeaderboard">
       <template name="score">
-        <div class="score" v-for="score in ALLSCORES" :key="score.usr_id"><p>{{score.user_username}}</p> <p>{{score.best_score}}</p></div>
+        <div class="score" v-for="score in ALLSCORES" :key="score.usr_id">
+          <img :src="avatarImage(score.ava_id)" alt="">
+          <p class="lead-username">{{score.user_username}}</p> 
+          <p class="lead-score">{{score.best_score}}</p></div>
+
       </template>  
     </Leaderboard>  
     
@@ -45,12 +53,18 @@ data(){
     return {
         score: null,
         scores: [],
-        leaderboardVisible: false
+        leaderboardVisible: false,
+        username: '',
+        name: '',
+        lastname: '',
+        avatar: null
+
     }
 },
-created(){
+mounted(){
   this.showScore();
-  this.addScore();
+  this.getScores();
+  this.getInfoForUser()
 },
 computed: {
     SCORE(){
@@ -71,6 +85,15 @@ beforeRouteEnter (to, from, next) {
   })
 },
 methods: {
+  getInfoForUser(){
+    axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/getInfoForUserModal', {sid: localStorage.getItem('sid')})
+    .then((response) => {
+      this.name = response.data.info[0].user_name;
+      this.lastname = response.data.info[0].user_lastname;
+      this.username = response.data.info[0].user_username;
+      this.avatar = response.data.info[0].ava_id;
+    })
+  },
   showScore(){
     let sid = localStorage.getItem('sid');
     axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/showScore', {sid: sid})
@@ -78,14 +101,11 @@ methods: {
       this.score = response.data.score
     })
   },
-  addScore(){
+  getScores(){
     let sid = localStorage.getItem('sid');
-    axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/score', {sid:sid})
-    .then(() => {
-      return axios.get('http://051b122.mars-e1.mars-hosting.com/quiz/engine/score')
-      .then(response => {
-        this.scores = response.data.score
-      })
+    axios.get('http://051b122.mars-e1.mars-hosting.com/quiz/engine/score', {sid:sid})
+    .then((response) => {
+      this.scores = response.data.score
     })
   },
   logout(){
@@ -104,7 +124,10 @@ methods: {
   },
   closeLeaderboard(){
     this.leaderboardVisible = false
-  }
+  },
+  avatarImage(id){
+    return require('../assets/avatar' + id + '.svg')
+  },
 }
 }
 </script>
@@ -131,15 +154,24 @@ $bela_kao: #cadbe5;
       -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-        & img{
+      counter-reset: score;
+        & .finish{
+          display: flex;
+          justify-content: center;
+            & img{
             width: 15%;
             margin-right: 1em;
+            }
+            & h2{
+                font-size: 2.2rem;
+                margin: 0;
+                color: $bela_kao;
+            }
         }
-        & h2{
-            font-size: 2.2rem;
-            margin: 0;
-            color: $bela_kao;
+        img{
+          width: 12%;
         }
+        
     }
     & .trophy{
         width: 100%;
@@ -199,16 +231,45 @@ $bela_kao: #cadbe5;
             &:focus{
               outline: none;
             }
-          // margin: 1.2em 0;
         }
       }
       & .score{
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: .3em;
-          & p{
-            margin: 0;
+        padding: .3em .5em;
+        border: 1px solid $bela_kao;
+        border-radius: 10px;
+        margin-bottom: .5em;
+        background-color: $svetlo_plava;
+          &::before{
+            counter-increment: score;
+            content:  counter(score) ". ";
+            margin-right: 10px;
+            font-weight: 500;
+            color: $bela_kao;
+          }
+          &:first-child::before{
+            font-family: "Material Icons"; 
+            font-weight: 900; 
+            content: "emoji_events";
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            color: $narandza;
+            font-size: 1.5rem;
+          }
+          & img{
+            width: 10%;
+            margin: 0 0 0 1em;
+          }
+          & .lead-username{
+            margin: 0 0 0 1em;
+            color: $bela_kao;
+          }
+          & .lead-score{
+            color: $narandza;
+            margin: 0 0 0 auto;
+            
           }
       }
 }

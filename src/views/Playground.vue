@@ -153,7 +153,7 @@ methods: {
             this.countDownTimer()
             setTimeout(() => {
                 this.showQuestions(this.score)
-            }, 1000)
+            }, 2000)
             
         }else{
             clearTimeout(this.timer)
@@ -215,7 +215,7 @@ header{
   border-radius: 30px;
   background-image: 
     linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  transition: 0.4s linear;  
+  transition: 1s linear;  
   transition-property: width, background-color;    
 }
 
