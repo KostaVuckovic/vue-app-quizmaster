@@ -5,6 +5,7 @@
       <h2>Quiz <span>Master</span></h2>
       <img id="img" class="img" src="../assets/quiz_bg2.svg" alt="quiz">
       <button id="leaderboardBtn" class="leaderboardBtn" @click="showLeaderboard">LEADERBOARD</button>
+      
     </header>
 
     <div class="buttons">
@@ -17,7 +18,7 @@
         <div class="score" v-for="score in scores" :key="score.usr_id">
           <img :src="avatarImage(score.ava_id)" alt="">
           <p class="lead-username">{{score.user_username}}</p> 
-          <p class="lead-score">{{score.best_score}}</p></div>
+          <p class="lead-score">{{score.best_score}} pts</p></div>
       </template>  
     </Leaderboard>  
 
@@ -131,6 +132,11 @@ $bela_kao: #cadbe5;
       -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+      @include laptop{
+        box-shadow: none;
+        animation: none;
+        height: 75%;
+      }
         & h2{
           color: $bela_kao;
           text-align: center;
@@ -147,6 +153,9 @@ $bela_kao: #cadbe5;
             }
           @include tablet{
             font-size: 5rem;
+          }
+          @include laptop{
+            font-size: 4.5rem;
           }
             & span{
               color: $narandza;
@@ -165,6 +174,11 @@ $bela_kao: #cadbe5;
           }
           @include tablet{
             max-width: 580px;
+            width: 60%;
+          }
+          @include laptop{
+            max-width: 500px;
+            width: 60%;
           }
         }
         & .leaderboardBtn{
@@ -233,7 +247,7 @@ $bela_kao: #cadbe5;
       padding: .3em .7em;
       border: 1px solid $bela_kao;
       border-radius: 10px;
-      margin-bottom: .5em;
+      margin-top: .5em;
       background-color: $svetlo_plava;
         &::before{
           counter-increment: score;

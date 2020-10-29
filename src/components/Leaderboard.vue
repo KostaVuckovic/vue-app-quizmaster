@@ -60,7 +60,7 @@ $bela_kao: #cadbe5;
             }
             & button{
               border: none;
-              font-size: 1.5rem;
+              font-size: 2rem;
               background: transparent;
               font-weight: 500;
               color: $bela_kao;
