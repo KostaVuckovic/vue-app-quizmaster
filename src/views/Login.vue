@@ -12,7 +12,7 @@
             <p class="msg">{{msg}}</p>
 
             <button class="btn" @click="loginUser(usernameModel, passwordModel)">SIGN IN</button>
-            <p class="loginText">By logging in you agree to the ridiculously long terms. <span class="signUp" @click="backSignUp">SignUp?</span></p>
+            <p class="loginText">By logging in you agree to the ridiculously long terms. <span class="signUp" @click="backSignUp">Sign up?</span></p>
 
         </div>
     </div>
@@ -49,14 +49,14 @@ export default {
             let mess = document.querySelector('.msg');
             if(!/^\w+$/.test(username)){
                 mess.style.visibility = "visible";
-                this.animateCSS('.msg', 'shake');
+                this.animateCSS('.msg', 'fadeIn');
                 this.msg = 'Username missing';
                 return
             }
 
             if(!/^\w+$/.test(password)){
                 mess.style.visibility = "visible";
-                this.animateCSS('.msg', 'shake');
+                this.animateCSS('.msg', 'fadeIn');
                 this.msg = 'Password missing';
                 return
             }
@@ -74,7 +74,6 @@ export default {
                 .catch(() => {})
             })
             .catch(() => {
-                // let mess = document.querySelector('.msg');
                 mess.style.visibility = "visible";
                 this.animateCSS('.msg', 'shake');
                 this.msg = 'Username or password is bad.';
@@ -125,6 +124,19 @@ $bela_kao: #cadbe5;
       border: 2px solid $narandza;
       background-color: $svetlo_plava;
       border-radius: 10px;
+      @include tablet{
+          max-width: 500px;
+          padding: 2.2em;
+      }
+      @include laptop{
+          max-width: 470px;
+          padding: 1.7em 2.2em;
+      }
+      @include desktop{
+          width: 40%;
+          max-width: 500px;
+          padding: 1.8em 2.8em;
+      }
         & h1{
           color: $bela_kao;
           font-size: 2.5rem;
@@ -133,6 +145,12 @@ $bela_kao: #cadbe5;
           @include phone{
               font-size: 2.8rem;
           }
+          @include tablet{
+              font-size: 3.1rem;
+          }
+          @include laptop{
+              font-size: 3.5rem;
+          }
         }
         & label{
           color: $bela_kao;
@@ -140,18 +158,34 @@ $bela_kao: #cadbe5;
           @include phone{
               font-size: 1.1rem;
           }
+          @include tablet{
+              font-size: 1.2rem;
+          }
+          @include laptop{
+              font-size: 1.1rem;
+          }
         }
         & input[type="text"], input[type="password"]{
           border-radius: 5px;
           border: 1px solid $tamno_plava;
           padding: .3em .5em;
+            &:focus{
+                outline: none;
+            }
         }
         & .msg{
             color: $bela_kao;
             margin: 1em 0;
-            height: 30px;
+            height: 25px;
             text-align: center;
             font-size: 1.2rem;
+            @include tablet{
+                font-size: 1.3rem;
+                margin: 1.1em 0;
+            }
+            @include laptop{
+                font-size: 1.2rem;
+            }
         }
         & .btn{
           background-color: $narandza;
@@ -161,17 +195,32 @@ $bela_kao: #cadbe5;
           color: $bela_kao;
           font-size: 1rem;
           font-weight: 500;
-            &:focus{
-                outline: none;
-            }
+          outline: none;
+          @include tablet{
+              font-size: 1.1rem;
+          }
+          @include laptop{
+              font-size: 1rem;
+          }
+            
         }
         & .loginText{
             color: $bela_kao;
             text-align: center;
             margin: 1em 0;
+            @include tablet{
+                font-size: 1.1rem;
+            }
+            @include laptop{
+                margin: .7em 0;
+                font-size: 1rem;
+            }
             & .signUp{
                 color: $narandza;
                 font-weight: 500;
+                    &:hover{
+                        cursor: pointer;
+                    }
             }
         }
     }

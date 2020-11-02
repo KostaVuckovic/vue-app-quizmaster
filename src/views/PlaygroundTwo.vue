@@ -165,6 +165,22 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5; 
 
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 768px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}
+
 .wrapper{
     display: flex;
     justify-content: center;
@@ -195,7 +211,7 @@ $bela_kao: #cadbe5;
             margin: 1.5em 0;
             border-radius: 30px;
             background: rgba(0, 0, 0, 0.25);  
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px rgba(255, 255, 255, 0.08);
             width: 100%;
         }
 

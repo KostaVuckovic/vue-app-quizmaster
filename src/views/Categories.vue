@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
       <header>
-          <h2 @click="goHome()">Quiz <span>Master</span></h2>
-          <img :src="avatarImage(this.gender)" alt="avatar" v-if="this.gender">
+          <h2>Quiz <span>Master</span></h2>
+          <img :src="avatarImage(this.gender)" alt="avatar" v-if="this.gender" @click="showModal">
       </header>
 
       <h3>Choose a category</h3>
@@ -20,9 +20,11 @@
     >
         <template #body>
 
-            <div class="infoModal">
+            <img :src="avatarImage(gender)" v-if="gender" class="avatar" alt="avatar">
+
+            <div class="info">
                 <p><span class="spanUser">Name:</span> {{userName}} </p>
-                <p><span class="spanUser">Lastname:</span> {{userLastname}} </p>
+                <p><span class="spanUser">Last name:</span> {{userLastname}} </p>
                 <p><span class="spanUser">Username:</span> {{userUsername}} </p>
             </div>
             
@@ -45,9 +47,9 @@ data(){
         categories: [],
         isModalVisible: false,
         gender: null,
-        userName: null,
-        userUsername: null,
-        userLastname: null
+        userName: '',
+        userUsername: '',
+        userLastname: ''
     }
 },
 mounted(){
@@ -64,17 +66,6 @@ beforeRouteEnter (to, from, next) {
       next('/login')
   })
 },
-// computed: {
-//     USERNAME(){
-//         return this.userName;
-//     },
-//     USERLASTNAME(){
-//         return this.userLastname;
-//     },
-//     USERUSERNAME(){
-//         return this.userUsername;
-//     }
-// },
 methods:{
     getInfoForUser(){
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/getInfoForUserModal', {sid: localStorage.getItem('sid')})
@@ -118,9 +109,6 @@ methods:{
         .then(() => {
             this.$router.push({name: 'Playground'})
         })
-    },
-    goHome(){
-        this.$router.push({name: 'Home'})
     }
 }
 }
@@ -153,6 +141,7 @@ $bela_kao: #cadbe5;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     & header{
         display: flex;
         justify-content: space-between;
@@ -166,26 +155,44 @@ $bela_kao: #cadbe5;
         box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
         @include phone{
             padding: 1.8em 1.5em;
+            max-width: 550px;
+        }
+        @include tablet{
+            padding: 1.5em 2em;
+            max-width: 630px;
+        }
+        @include laptop{
+            padding: 1.3em 1.4em;
+            max-width: 700px;
         }
             & h2{
                 color: $bela_kao;
                 font-size: 2.2rem;
                 text-align: center;
+                @include tablet{
+                    font-size: 2.4rem;
+                }
+                @include laptop{
+                    font-size: 2.2rem;
+                }
                     & span{
                         color: $narandza;
                     }
             }
             img{
                 width: 12%;
-                max-width: 50px;
+                max-width: 45px;
+                    &:hover{
+                        cursor: pointer;
+                    }
             }
     }
     & h3{
         color: $bela_kao;
         font-size: 1.8rem;
-        margin: 1em 0;
+        margin: 1.2em 0;
         @include phone{
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
     }
     & .categories{
@@ -198,18 +205,38 @@ $bela_kao: #cadbe5;
                 display: flex;
                 align-items: center;
                 width: 90%;
-                margin: .5em 0;
+                margin: .6em 0;
                 background-color: $svetlo_plava;
                 color: $bela_kao;
-                padding: .6em .8em;
+                padding: .8em;
                 border-radius: 10px;
+                transition: .3s ease-in-out;
                 @include phone{
                     max-width: 500px;
                     width: 85%;
                 }
+                @include tablet{
+                    margin: .7em 0;
+                    padding: 1em 1.1em;
+                    max-width: 530px;
+                }
+                @include laptop{
+                    margin: .5em 0;
+                    padding: .7em .8em;
+                }
+                    &:hover{
+                        cursor: pointer;
+                        box-shadow: 9px 9px 15px 0px rgba(0, 0, 0, 0.73);
+                    }
                     & img{
                         width: 18%;
                         max-width: 50px;
+                        @include tablet{
+                            max-width: 60px;
+                        }
+                        @include laptop{
+                            max-width: 50px;
+                        }
                     }
                     & p{
                         margin: 0 0 0 1em;
@@ -218,8 +245,17 @@ $bela_kao: #cadbe5;
                         @include phone{
                             font-size: 1.6rem;
                         }
+                        @include tablet{
+                            font-size: 1.8rem;
+                        }
+                        @include laptop{
+                            font-size: 1.5rem;
+                        }
                     }
             }
+    }
+    .avatar{
+        width: 30%;
     }
     
 }

@@ -14,7 +14,7 @@
     </div>
 
     <Leaderboard v-show="leaderboardVisible" @close="closeLeaderboard">
-      <template name="score">
+      <template #score>
         <div class="score" v-for="score in scores" :key="score.usr_id">
           <img :src="avatarImage(score.ava_id)" alt="">
           <p class="lead-username">{{score.user_username}}</p> 
@@ -281,6 +281,7 @@ $bela_kao: #cadbe5;
         & img{
           width: 9%;
           margin: 0 0 0 1em;
+          
         }
         & .lead-username{
           margin: 0 0 0 1em;

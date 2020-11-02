@@ -1,6 +1,6 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div class="wrapper">
+  <transition name="modal">
+    <div class="wrapper" @click="close">
       <div class="container">
         <header>
           <h2>Top 10 players</h2>
@@ -8,7 +8,9 @@
         </header>
 
         <div class="scores">
-          <slot class="score"></slot>
+          <slot name="score">
+            default text
+          </slot>
         </div>
         
       </div>
@@ -33,6 +35,22 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5; 
 
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 768px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}
+
 .wrapper{
   position: fixed;
   z-index: 9998;
@@ -49,6 +67,12 @@ $bela_kao: #cadbe5;
       background-color: $tamno-plava;
       padding: 1em;
       border-radius: 15px;
+      max-width: 400px;
+      transition: all .3s ease;
+      @include phone{
+        width: 90%;
+        max-width: 500px;
+      }
         & header{
           display: flex;
           justify-content: space-between;
@@ -71,8 +95,21 @@ $bela_kao: #cadbe5;
         }
         & .scores{
           padding: .5em;
-            
         }
     }
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .container,
+.modal-leave-active .container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 </style>

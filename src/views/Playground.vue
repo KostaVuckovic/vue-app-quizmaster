@@ -56,7 +56,7 @@ computed: {
 },
 mounted(){
     this.showQuestions(0);
-    this.countDownTimer();
+    // this.countDownTimer();
 },
 beforeRouteEnter (to, from, next) {
   let sid = localStorage.getItem('sid');
@@ -172,97 +172,157 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5; 
 
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 768px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}
+
 .wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5em 1.1em;
-    width: 100%;
-    background-color: $svetlo_plava;
-    -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-    -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-    box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-        & img{
-            width: 15%;
-            margin-right: 1em;
-        }
-        & h2{
-            font-size: 2.2rem;
-            margin: 0;
-            color: $bela_kao;
-        }
-}
-
-
-.progress2 {
-  padding: 3px;
-  margin: 1.2em 0;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.25);  
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
-  width: 100%;
-}
-
-.progress-bar2 {
-  height: 5px;
-  border-radius: 30px;
-  background-image: 
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  transition: 1s linear;  
-  transition-property: width, background-color;    
-}
-
-.progress-moved .progress-bar2 {
-  width: 0%; 
-  background-color: $narandza;  
-}
-
-.score{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .7em;
-    width: 90%;
-    border-bottom: 1px solid $bela_kao;
-        & p{
-            color: $bela_kao;
-            font-size: 1.2rem;
-            margin: 0;
-                & span{
-                    color: $narandza;
+        & header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5em 1.1em;
+            width: 100%;
+            background-color: $svetlo_plava;
+            -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+            -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+            box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+                & img{
+                    width: 15%;
+                    max-width: 50px;
+                    margin-right: 1em;
+                    @include phone{
+                        margin-right: 2em;
+                        max-width: 55px;
+                    }
+                    @include tablet{
+                        max-width: 65px;
+                    }
+                }
+                & h2{
+                    font-size: 2.2rem;
+                    margin: 0;
+                    color: $bela_kao;
+                    @include phone{
+                        font-size: 2.4rem;
+                    }
+                    @include tablet{
+                        font-size: 2.8rem;
+                    }
                 }
         }
-}
+        & .progress2 {
+            padding: 3px;
+            margin: 2em 0 1.2em 0;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.4);  
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            width: 96%;
+            @include phone{
+                max-width: 650px;
+            }
+        }
 
-.question{
-    padding: 1em;
-        & p{
-            color: $bela_kao;
-            font-size: 1.3rem;
-            margin: 0;
+        & .progress-bar2 {
+            height: 5px;
+            border-radius: 30px;
+            background-image: 
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+            transition: 1s linear;  
+            transition-property: width, background-color;    
+        }
+
+        & .progress-moved .progress-bar2 {
+            width: 0%; 
+            background-color: $narandza;  
+        }
+
+        & .score{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .7em;
+            width: 90%;
+            border-bottom: 1px solid $bela_kao;
+            @include phone{
+                max-width: 570px;
+            }
+                & p{
+                    color: $bela_kao;
+                    font-size: 1.2rem;
+                    margin: 0;
+                    @include phone{
+                        font-size: 1.3rem;
+                    }
+                        & span{
+                            color: $narandza;
+                        }
+                }
+        }
+
+        & .question{
+            padding: 1em;
+            max-width: 450px;
+            @include phone{
+                max-width: 520px;
+                padding: 1.2em;
+            }
+            @include tablet{
+                max-width: 560px;
+            }
+                & p{
+                    color: $bela_kao;
+                    font-size: 1.3rem;
+                    margin: 0;
+                    @include phone{
+                        font-size: 1.5rem;
+                    }
+                    @include tablet{
+                        font-size: 1.8rem;
+                    }
+                }
+        }
+
+        & .answers{
+            padding: 1em;
+            width: 100%;
+            max-width: 450px;
+            @include phone{
+                max-width: 520px;
+            }
+            & .answer{
+                padding: .5em 1em;
+                color: $tamno_plava;
+                background-color: $bela_kao;
+                border-radius: 50px;
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.2rem;
+                margin-top: .6em;
+                @include phone{
+                    margin-top: 1em;
+                    padding: .7em 1em;
+                    font-size: 1.3rem; 
+                }
+            }
         }
 }
 
-.answers{
-    padding: 1em;
-    width: 100%;
-    & .answer{
-        padding: .5em 1em;
-        color: $tamno_plava;
-        background-color: $bela_kao;
-        border-radius: 50px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: .5em;
-    }
-}
+
 </style>
