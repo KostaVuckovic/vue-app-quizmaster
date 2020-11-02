@@ -19,8 +19,8 @@
         <p>{{question.que_question}}</p>
     </div>
 
-    <div class="answer-check">
-
+    <div class="answer-check-wrapper">
+        <p class="answer-check">{{CHECK_ANSWER}}</p>
     </div>
 
     <div class="answer">
@@ -47,7 +47,8 @@ data(){
         timer: null,
         correctAnswer: null,
         category_name: '',
-        category_id: null
+        category_id: null,
+        checkAnswer: ''
     }
 },
 mounted(){
@@ -60,6 +61,9 @@ computed: {
     },
     QUESTS(){
         return this.questionCount
+    },
+    CHECK_ANSWER(){
+        return this.checkAnswer
     }
 },
 beforeRouteEnter (to, from, next) {
@@ -105,22 +109,26 @@ methods: {
         .then((response) => {
             if(response.data.check === 'CORRECT'){
                 this.score += 5;
-                
+                document.querySelector('.answer-check').style.color = "green"
+                this.checkAnswer = "Correct!"
                 setTimeout(() => {
                     this.countdown = 0
+                    this.checkAnswer = ''
                     this.showQuestions(this.score)
-                }, 1000)
+                }, 1200)
                 this.answerModel = ''
             }else{
                 this.score -= 5;
                 if(this.score < 0){
                     this.score = 0
                 }
-                
+                document.querySelector('.answer-check').style.color = "red"
+                this.checkAnswer = response.data.answer
                 setTimeout(() => {
                     this.countdown = 0
+                    this.checkAnswer = ''
                     this.showQuestions(this.score)
-                }, 1000)
+                }, 1200)
                 this.answerModel = ''
             }
         })
@@ -162,109 +170,114 @@ $bela_kao: #cadbe5;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5em 1.1em;
-    width: 100%;
-    background-color: $svetlo_plava;
-    -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-    -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-    box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
-        & img{
-            width: 15%;
-            margin-right: 1em;
-        }
-        & h2{
-            font-size: 2.2rem;
-            margin: 0;
-            color: $bela_kao;
-        }
-}
-
-.progress2 {
-  padding: 3px;
-  margin: 1.5em 0;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.25);  
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
-  width: 100%;
-}
-
-.progress-bar2 {
-  height: 5px;
-  border-radius: 30px;
-  background-image: 
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  transition: 0.4s linear;  
-  transition-property: width, background-color;    
-}
-
-.progress-moved .progress-bar2 {
-  width: 0%; 
-  background-color: $narandza;  
-}
-
-.score{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .7em;
-    width: 90%;
-    border-bottom: 1px solid $bela_kao;
-        & p{
-            color: $bela_kao;
-            font-size: 1.2rem;
-            margin: 0;
-                & span{
-                    color: $narandza;
+        & header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5em 1.1em;
+            width: 100%;
+            background-color: $svetlo_plava;
+            -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+            -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+            box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+                & img{
+                    width: 15%;
+                    margin-right: 1em;
+                }
+                & h2{
+                    font-size: 2.2rem;
+                    margin: 0;
+                    color: $bela_kao;
                 }
         }
-}
-
-.question{
-    padding: 1em;
-        & p{
-            color: $bela_kao;
-            font-size: 1.5rem;
-            margin: 0;
+        & .progress2 {
+            padding: 3px;
+            margin: 1.5em 0;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.25);  
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+            width: 100%;
         }
-}
 
-.answer-check{
-    width: 100%;
-    height: 100px;
-}
+        & .progress-bar2 {
+        height: 5px;
+        border-radius: 30px;
+        background-image: 
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+        transition: 0.4s linear;  
+        transition-property: width, background-color;    
+        }
 
-.answer{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1em;
-    margin-top: 1em;
-        & input[type="text"]{
-            padding: .4em .8em;
-            border-radius: 50px;
-            border: 2px solid $narandza;
-            background-color: $bela_kao;
-            margin-bottom: 1em;
-                &:focus{
-                    outline: none;
+        & .progress-moved .progress-bar2 {
+        width: 0%; 
+        background-color: $narandza;  
+        }
+
+        & .score{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .7em;
+            width: 90%;
+            border-bottom: 1px solid $bela_kao;
+                & p{
+                    color: $bela_kao;
+                    font-size: 1.2rem;
+                    margin: 0;
+                        & span{
+                            color: $narandza;
+                        }
                 }
         }
-        & button{
-            border-radius: 10px;
-            background-color: $narandza;
-            color: $bela_kao;
-            padding: .5em 0;
-            font-weight: 500;
-            border: none;
-                &:focus{
-                    outline: none;
+
+        & .question{
+            padding: 1em;
+                & p{
+                    color: $bela_kao;
+                    font-size: 1.5rem;
+                    margin: 0;
                 }
+        }
+
+        & .answer-check-wrapper{
+            width: 100%;
+            height: 100px;
+            margin-top: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                & p{
+                    font-size: 1.5rem;
+                }
+        }
+
+        & .answer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 1em;
+        margin-top: 1em;
+            & input[type="text"]{
+                padding: .4em .8em;
+                border-radius: 50px;
+                border: 2px solid $narandza;
+                background-color: $bela_kao;
+                margin-bottom: 1em;
+                    &:focus{
+                        outline: none;
+                    }
+            }
+            & button{
+                border-radius: 10px;
+                background-color: $narandza;
+                color: $bela_kao;
+                padding: .5em 0;
+                font-weight: 500;
+                border: none;
+                    &:focus{
+                        outline: none;
+                    }
+            }
         }
 }
 </style>

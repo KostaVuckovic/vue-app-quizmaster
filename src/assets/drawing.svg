@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="440.25872"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="true"
+     showborder="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     borderlayer="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g731"
+       transform="matrix(0.26458333,0,0,0.26458333,-142.11904,16.541668)">
+      <path
+         d="M 1056.3143,755.37143 H 814.31429 c -5.5,0 -10,-4.5 -10,-10 v -470.9 c 0,-5.5 4.5,-10 10,-10 h 280.00001 c 5.5,0 10,4.5 10,10 v 432.9 c 0,26.5 -21.5,48 -48,48 z"
+         class="st1"
+         id="XMLID_81_"
+         inkscape:connector-curvature="0"
+         style="opacity:0.23999999;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <g
+         id="XMLID_5_"
+         transform="translate(425.71429,-11.428572)">
+        <path
+           d="M 602,745.5 H 360 c -5.5,0 -10,-4.5 -10,-10 v -471 c 0,-5.5 4.5,-10 10,-10 h 280 c 5.5,0 10,4.5 10,10 v 432.9 c 0,26.6 -21.5,48.1 -48,48.1 z"
+           class="st2"
+           id="XMLID_125_"
+           inkscape:connector-curvature="0"
+           style="fill:#fca417" />
+        <path
+           d="M 361.8,731.8 V 268.2 c 0,-7.5 6.1,-13.6 13.6,-13.6 h -11.8 c -7.5,0 -13.6,6.1 -13.6,13.6 v 463.6 c 0,7.5 6.1,13.6 13.6,13.6 h 11.8 c -7.5,0.1 -13.6,-6.1 -13.6,-13.6 z"
+           class="st3"
+           id="XMLID_123_"
+           inkscape:connector-curvature="0"
+           style="opacity:0.33000004;fill:#ffffff" />
+        <circle
+           r="51.799999"
+           cy="591.40002"
+           cx="440"
+           class="st4"
+           id="XMLID_121_"
+           style="fill:#fca84c" />
+        <path
+           d="m 402.1,561 c 17.5,-21.9 49.2,-25.8 71.5,-9.1 -0.4,-0.3 -0.8,-0.7 -1.2,-1 -22.3,-17.9 -55,-14.3 -72.8,8.1 -17.8,22.4 -14.3,55 8.1,72.8 0.4,0.3 0.9,0.7 1.3,1 -21.3,-18.1 -24.5,-49.9 -6.9,-71.8 z"
+           class="st5"
+           id="XMLID_119_"
+           inkscape:connector-curvature="0"
+           style="opacity:0.66000001;fill:#fca84c" />
+        <g
+           id="XMLID_112_">
+          <path
+             d="m 636.4,254.5 h -12.5 c 7.5,0 13.9,6.1 13.9,13.6 V 680 c 0,36.1 -29.5,65.5 -65.7,65.5 h 12.5 c 36.1,0 65.5,-29.3 65.5,-65.5 V 268.2 c -0.1,-7.5 -6.2,-13.7 -13.7,-13.7 z"
+             class="st4"
+             id="XMLID_117_"
+             inkscape:connector-curvature="0"
+             style="fill:#fca84c" />
+          <path
+             d="m 544.7,745.5 h 39.8 c 36.1,0 65.5,-29.3 65.5,-65.5 v -39.8 z"
+             class="st4"
+             id="XMLID_115_"
+             inkscape:connector-curvature="0"
+             style="fill:#fca84c" />
+          <path
+             d="M 584.5,735.9 H 372 c -5.1,0 -9.3,4.2 -9.3,9.3 v 0.2 h 221.8 c 58.1,0 65.5,-29.3 65.5,-65.5 v -9.5 c 0,36.2 -29.3,65.5 -65.5,65.5 z"
+             class="st4"
+             id="XMLID_113_"
+             inkscape:connector-curvature="0"
+             style="fill:#fca84c" />
+        </g>
+        <path
+           d="M 602,745.5 H 360 c -5.5,0 -10,-4.5 -10,-10 v -471 c 0,-5.5 4.5,-10 10,-10 h 280 c 5.5,0 10,4.5 10,10 v 432.9 c 0,26.6 -21.5,48.1 -48,48.1 z"
+           class="st6"
+           id="XMLID_111_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <path
+           d="M 593.1,482.5 H 394.9 c -2.2,0 -4,-1.8 -4,-4 v -164 c 0,-2.2 1.8,-4 4,-4 h 210.2 c 2.2,0 4,1.8 4,4 v 152 c 0,8.8 -7.2,16 -16,16 z"
+           class="st7"
+           id="XMLID_110_"
+           inkscape:connector-curvature="0"
+           style="fill:#514447" />
+        <path
+           d="M 593.1,482.5 H 394.9 c -2.2,0 -4,-1.8 -4,-4 v -164 c 0,-2.2 1.8,-4 4,-4 h 210.2 c 2.2,0 4,1.8 4,4 v 152 c 0,8.8 -7.2,16 -16,16 z"
+           class="st8"
+           id="XMLID_109_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <path
+           d="M 567.2,463.4 H 432.8 c -0.6,0 -1,-0.4 -1,-1 V 338.9 c 0,-0.6 0.4,-1 1,-1 h 134.4 c 0.6,0 1,0.4 1,1 v 123.5 c 0,0.6 -0.5,1 -1,1 z"
+           class="st9"
+           id="XMLID_108_"
+           inkscape:connector-curvature="0"
+           style="fill:#83906f" />
+        <path
+           d="M 567.2,463.4 H 432.8 c -0.6,0 -1,-0.4 -1,-1 V 338.9 c 0,-0.6 0.4,-1 1,-1 h 134.4 c 0.6,0 1,0.4 1,1 v 123.5 c 0,0.6 -0.5,1 -1,1 z"
+           class="st8"
+           id="XMLID_107_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <path
+           d="M 636.4,254.5 H 363.6 c -7.5,0 -13.6,6.1 -13.6,13.6 v 13.6 h 300 v -13.6 c 0,-7.4 -6.1,-13.6 -13.6,-13.6 z"
+           class="st8"
+           id="XMLID_106_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <line
+           y2="508.20001"
+           x2="609.09998"
+           y1="508.20001"
+           x1="528.59998"
+           class="st8"
+           id="XMLID_105_"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <line
+           y2="508.20001"
+           x2="471.39999"
+           y1="508.20001"
+           x1="390.89999"
+           class="st8"
+           id="XMLID_104_"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <g
+           id="XMLID_94_">
+          <g
+             id="g35">
+            <g
+               id="XMLID_152_">
+              <path
+                 d="m 474.8,602.5 h -67.2 c -2.5,0 -4.6,-2 -4.6,-4.6 v -13.1 c 0,-2.5 2,-4.6 4.6,-4.6 h 67.2 c 2.5,0 4.6,2 4.6,4.6 v 13.1 c -0.1,2.6 -2.1,4.6 -4.6,4.6 z"
+                 class="st10"
+                 id="XMLID_153_"
+                 inkscape:connector-curvature="0"
+                 style="fill:#664a4a" />
+            </g>
+            <g
+               id="XMLID_150_">
+              <path
+                 d="m 430,625 v -67.2 c 0,-2.5 2,-4.6 4.6,-4.6 h 13.1 c 2.5,0 4.6,2 4.6,4.6 V 625 c 0,2.5 -2,4.6 -4.6,4.6 H 434.6 C 432,629.5 430,627.5 430,625 Z"
+                 class="st10"
+                 id="XMLID_151_"
+                 inkscape:connector-curvature="0"
+                 style="fill:#664a4a" />
+            </g>
+          </g>
+        </g>
+        <path
+           d="m 473.6,580.5 h -19.1 c -1.2,0 -2.1,-1 -2.1,-2.1 v -18.9 c 0,-3.4 -2.8,-6.2 -6.2,-6.2 h -9.8 c -3.2,0 -5.8,2.6 -5.8,5.8 v 19.4 c 0,1.2 -1,2.1 -2.1,2.1 h -19.1 c -3.3,0 -6,2.7 -6,6 v 9.8 c 0,3.3 2.7,6 6,6 h 19.1 c 1.2,0 2.1,1 2.1,2.1 v 18.9 c 0,3.4 2.8,6.2 6.2,6.2 h 9.4 c 3.4,0 6.2,-2.8 6.2,-6.2 v -18.9 c 0,-1.2 1,-2.1 2.1,-2.1 h 18.7 c 3.6,0 6.4,-2.9 6.4,-6.4 v -9.4 c -0.1,-3.5 -2.7,-6.1 -6,-6.1 z"
+           class="st8"
+           id="XMLID_93_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <g
+           id="XMLID_77_">
+          <path
+             d="m 557.1,629.2 c -5.5,0 -10.6,-2.1 -14.5,-6 -3.9,-3.9 -6,-9 -6,-14.5 0,-5.5 2.1,-10.6 6,-14.5 l 34.7,-34.7 c 3.9,-3.9 9,-6 14.5,-6 5.5,0 10.6,2.1 14.5,6 8,8 8,21 0,28.9 l -34.7,34.7 c -3.9,3.9 -9,6.1 -14.5,6.1 z"
+             class="st4"
+             id="XMLID_91_"
+             inkscape:connector-curvature="0"
+             style="fill:#fca84c" />
+          <path
+             d="m 544.2,623.2 c -3.9,-3.9 -6,-9 -6,-14.5 0,-5.5 2.1,-10.6 6,-14.5 l 34.7,-34.7 c 3.7,-3.7 8.5,-5.8 13.7,-5.9 -0.3,0 -0.5,0 -0.8,0 -5.5,0 -10.6,2.1 -14.5,6 l -34.7,34.7 c -3.9,3.9 -6,9 -6,14.5 0,5.5 2.1,10.6 6,14.5 3.9,3.9 9,6 14.5,6 0.3,0 0.5,0 0.8,0 -5.2,-0.4 -10,-2.4 -13.7,-6.1 z"
+             class="st5"
+             id="XMLID_88_"
+             inkscape:connector-curvature="0"
+             style="opacity:0.66000001;fill:#fca84c" />
+          <circle
+             r="13.6"
+             cy="574"
+             cx="591.79999"
+             class="st11"
+             id="XMLID_86_"
+             style="fill:#ff1f1f" />
+          <circle
+             r="13.6"
+             cy="608.70001"
+             cx="557.09998"
+             class="st11"
+             id="XMLID_80_"
+             style="fill:#ff1f1f" />
+          <circle
+             r="13.6"
+             cy="574"
+             cx="591.79999"
+             class="st8"
+             id="XMLID_79_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <circle
+             r="13.6"
+             cy="608.70001"
+             cx="557.09998"
+             class="st8"
+             id="XMLID_78_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        </g>
+        <path
+           d="m 472,683.2 -2.1,-2.1 c -1.2,-1.2 -1.2,-3.1 0,-4.2 L 491,655.8 c 1.2,-1.2 3.1,-1.2 4.2,0 l 2.1,2.1 c 1.2,1.2 1.2,3.1 0,4.2 l -21.1,21.1 c -1.2,1.2 -3.1,1.2 -4.2,0 z"
+           class="st8"
+           id="XMLID_76_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <path
+           d="m 506.2,683.2 -2.1,-2.1 c -1.2,-1.2 -1.2,-3.1 0,-4.2 l 21.1,-21.1 c 1.2,-1.2 3.1,-1.2 4.2,0 l 2.1,2.1 c 1.2,1.2 1.2,3.1 0,4.2 l -21.1,21.1 c -1.1,1.2 -3,1.2 -4.2,0 z"
+           class="st8"
+           id="XMLID_75_"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <g
+           id="XMLID_61_">
+          <line
+             y2="706.79999"
+             x2="593.20001"
+             y1="690.40002"
+             x1="576.90002"
+             class="st6"
+             id="XMLID_74_"
+             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="717.40002"
+             x2="582.59998"
+             y1="701"
+             x1="566.20001"
+             class="st6"
+             id="XMLID_70_"
+             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="695.20001"
+             x2="604.79999"
+             y1="678.79999"
+             x1="588.40002"
+             class="st6"
+             id="XMLID_64_"
+             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="684.59998"
+             x2="615.40002"
+             y1="668.20001"
+             x1="599"
+             class="st6"
+             id="XMLID_63_"
+             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="674"
+             x2="626"
+             y1="657.59998"
+             x1="609.59998"
+             class="st6"
+             id="XMLID_62_"
+             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        </g>
+        <rect
+           height="27.299999"
+           width="238"
+           class="st8"
+           y="254.5"
+           x="381.39999"
+           id="XMLID_60_"
+           style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        <g
+           id="XMLID_57_">
+          <line
+             y2="325.5"
+             x2="509.10001"
+             y1="325.5"
+             x1="411.39999"
+             class="st8"
+             id="XMLID_59_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="325.5"
+             x2="592.70001"
+             y1="325.5"
+             x1="561.40002"
+             class="st8"
+             id="XMLID_58_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        </g>
+        <g
+           id="XMLID_37_">
+          <line
+             y2="511.79999"
+             x2="485.20001"
+             y1="504.60001"
+             x1="485.20001"
+             class="st8"
+             id="XMLID_56_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="511.79999"
+             x2="495.10001"
+             y1="504.60001"
+             x1="495.10001"
+             class="st8"
+             id="XMLID_46_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="511.79999"
+             x2="504.89999"
+             y1="504.60001"
+             x1="504.89999"
+             class="st8"
+             id="XMLID_45_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+          <line
+             y2="511.79999"
+             x2="514.79999"
+             y1="504.60001"
+             x1="514.79999"
+             class="st8"
+             id="XMLID_41_"
+             style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <style
+     id="style10"
+     type="text/css">
+	.st0{fill:#D14657;}
+	.st1{opacity:0.24;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#FCA417;}
+	.st3{opacity:0.33;fill:#FFFFFF;}
+	.st4{fill:#FCA84C;}
+	.st5{opacity:0.66;fill:#FCA84C;}
+	.st6{fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st7{fill:#514447;}
+	.st8{fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st9{fill:#83906F;}
+	.st10{fill:#664A4A;}
+	.st11{fill:#FF1F1F;}
+</style>
+</svg>

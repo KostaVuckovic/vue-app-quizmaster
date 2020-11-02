@@ -32,7 +32,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   position: fixed;
   z-index: 9998;

@@ -133,9 +133,8 @@ $bela_kao: #cadbe5;
       -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       @include laptop{
-        box-shadow: none;
-        animation: none;
-        height: 75%;
+        animation: none; 
+        padding: 1em 0;
       }
         & h2{
           color: $bela_kao;
@@ -155,7 +154,7 @@ $bela_kao: #cadbe5;
             font-size: 5rem;
           }
           @include laptop{
-            font-size: 4.5rem;
+            font-size: 3.5rem;
           }
             & span{
               color: $narandza;
@@ -177,8 +176,9 @@ $bela_kao: #cadbe5;
             width: 60%;
           }
           @include laptop{
-            max-width: 500px;
+            max-width: 400px;
             width: 60%;
+            margin: 1em 0;
           }
         }
         & .leaderboardBtn{
@@ -205,6 +205,13 @@ $bela_kao: #cadbe5;
             font-size: 1.4rem;
             max-width: 450px;
             padding: .6em .2em;
+          }
+          @include laptop{
+            font-size: 1.1rem;
+            max-width: 350px;
+            padding: .4em .2em;
+            margin-top: 1em;
+            border-radius: 10px;
           }
             &:focus{
               outline: none;
@@ -238,6 +245,13 @@ $bela_kao: #cadbe5;
             font-size: 1.4rem;
             max-width: 450px;
             padding: .6em .2em;
+          }
+          @include laptop{
+            font-size: 1.1rem;
+            max-width: 350px;
+            padding: .4em .2em;
+            margin-top: 1em;
+            border-radius: 10px;
           }
         }
     }

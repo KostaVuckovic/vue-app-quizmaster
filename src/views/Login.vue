@@ -93,16 +93,34 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5; 
 
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 768px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}
+
 .wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
     & .container{
       display: flex;
       justify-content: center;
       flex-direction: column;
       padding: 1.5em;
       width: 85%;
+      max-width: 370px;
       transition: height 2s ease-in-out;
       border: 2px solid $narandza;
       background-color: $svetlo_plava;
@@ -111,10 +129,17 @@ $bela_kao: #cadbe5;
           color: $bela_kao;
           font-size: 2.5rem;
           text-align: center;
+          margin-bottom: .5em;
+          @include phone{
+              font-size: 2.8rem;
+          }
         }
         & label{
           color: $bela_kao;
           margin: .5em 0 0 0;
+          @include phone{
+              font-size: 1.1rem;
+          }
         }
         & input[type="text"], input[type="password"]{
           border-radius: 5px;
@@ -123,7 +148,10 @@ $bela_kao: #cadbe5;
         }
         & .msg{
             color: $bela_kao;
-            margin: .5em 0;
+            margin: 1em 0;
+            height: 30px;
+            text-align: center;
+            font-size: 1.2rem;
         }
         & .btn{
           background-color: $narandza;
@@ -133,10 +161,14 @@ $bela_kao: #cadbe5;
           color: $bela_kao;
           font-size: 1rem;
           font-weight: 500;
-          margin-top: 1.5em;
+            &:focus{
+                outline: none;
+            }
         }
         & .loginText{
             color: $bela_kao;
+            text-align: center;
+            margin: 1em 0;
             & .signUp{
                 color: $narandza;
                 font-weight: 500;

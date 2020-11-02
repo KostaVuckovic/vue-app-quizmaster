@@ -13,24 +13,23 @@
         <label for="psw">Password</label>
         <input type="password" class="psw" v-model="passwordModel" v-on:keyup.enter="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)" >
         <!-- inputs end -->
-        <label for="gender">Select gender</label>
+        <label class="label-gender" for="gender">Select gender</label>
         <div class="genders">
           <div class="radio">
             <input id="r1" type="radio" name="radio" value="1" v-model="gender">
             <label for="r1">Male</label>
-            <div class="check"></div>
           </div>
-          
           <div class="radio">
             <input id="r2" type="radio" name="radio" value="2" v-model="gender">
             <label for="r2">Female</label>
-            <div class="check"></div>
           </div>
           
         </div>
+
+        <p class="msg">{{msg}}</p>
+
         <button class="btn" @click="createAcc(nameModel, lastnameModel, usernameModel, passwordModel, gender)">SIGN UP</button>
         <p class="login">Or <span @click="goLogin">log in?</span></p>
-        <p style="color: white" class="msg">{{msg}}</p>
       </div>
     </div>
 </template>
@@ -167,13 +166,20 @@ $svetlo_plava: #2c4058;
 $narandza: #e78230;
 $bela_kao: #cadbe5; 
 
-@keyframes containerDown {
-  from {
-    height: 0;
-  }
-  to {
-    height: 75%;
-  }
+@mixin phone {
+  @media (min-width: 480px) { @content; }
+}
+@mixin tablet {
+  @media (min-width: 768px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 1025px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
 }
 
 .wrapper{
@@ -186,28 +192,76 @@ $bela_kao: #cadbe5;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      animation-duration: 2s;
-      animation-name: containerDown;
-      animation-fill-mode: forwards;  
-      transition: height 2s;
-      padding: 1.5em;
+      padding: 1em 1.4em;
       width: 85%;
+      max-width: 350px;
       border: 2px solid $narandza;
       background-color: $svetlo_plava;
       border-radius: 10px;
+      @include phone{
+        max-width: 380px;
+      }
+      @include tablet{
+        max-width: 480px;
+        padding: 1.4em 2em;
+      }
         & h1{
           color: $bela_kao;
           font-size: 2.5rem;
           text-align: center;
+          margin-bottom: .5em; 
+          @include phone{
+            font-size: 2.9rem;
+          }
+          @include tablet{
+            font-size: 3.5rem;
+          }
         }
         & label{
           color: $bela_kao;
-          margin: .5em 0 0 0;
+          margin: .4em 0 0 0;
+          @include tablet{
+            font-size: 1.2rem;
+          }
         }
         & input[type="text"], input[type="password"]{
           border-radius: 5px;
           border: 1px solid $tamno_plava;
-          padding: .3em .5em;
+          padding: .2em .5em;
+        }
+        & .label-gender{
+          padding: .5em 0;
+          border-bottom: 1px solid $narandza;
+          text-align: center;
+          font-size: 1.1rem;
+          @include tablet{
+            font-size: 1.2rem;
+          }
+        }
+        & .genders{
+          display: flex;
+          justify-content: space-around;
+          padding: .5em 0;
+            & .radio{
+            padding: .4em;
+              & input[type="radio"]{
+                margin-right: 1em;
+              }
+              & label{
+                font-size: 1rem;
+                margin: 0;
+                @include tablet{
+                  font-size: 1.2rem;
+                }
+              }
+            }
+        }
+        & .msg{
+          margin: .4em 0 .8em 0;
+          text-align: center;
+          font-size: 1.2rem;
+          height: 25px;
+          color: $bela_kao;
         }
         & .btn{
           background-color: $narandza;
@@ -217,47 +271,19 @@ $bela_kao: #cadbe5;
           color: $bela_kao;
           font-size: 1rem;
           font-weight: 500;
-          margin-top: 1.5em;
+        }
+        .login{
+          color: $bela_kao;
+          text-align: center;
+          font-size: 1.1rem;
+          margin: 1em 0 0 0;
+            & span{
+              color: $narandza;
+              font-weight: 500;
+            }
         }
     }
 }
 
-// input[type="radio"]{
-//   position: absolute;
-//   visibility: hidden;
-// }
 
-// .genders{
-//   display: flex;
-//   justify-content: space-between;
-//     & .radio{
-//       padding: .5em;
-//         & .check{
-//           display: block;
-//           position: absolute;
-//           border: 5px solid #AAAAAA;
-//           border-radius: 100%;
-//           height: 25px;
-//           width: 25px;
-//           top: 30px;
-//           left: 20px;
-//           z-index: 5;
-//           transition: border .25s linear;
-//           transition: border .25s linear;
-//         }
-//     }
-//     & label{
-//       cursor: pointer;
-//       transition: all 0.25s linear;
-//     }
-  
-// }
-
-.login{
-  color: $bela_kao;
-  text-align: center;
-    & span{
-      color: $narandza;
-    }
-}
 </style>
