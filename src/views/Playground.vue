@@ -15,9 +15,13 @@
         <p><span>{{QUESTS}}</span>/5</p>
     </div>
 
+    
     <div class="question">
-        <p>{{question}}</p>
+        <transition name="slide-fade">
+            <p v-if="showQuestion">{{question}}</p>
+        </transition>
     </div>
+    
 
     <div class="answers">
         <div class="answer" v-for="a in answers" :key="a.index" @click="clickAns(a.ans_option, $event)">
@@ -43,7 +47,8 @@ data(){
         score: 0,
         timer: null,
         category_name: '',
-        category_id: null
+        category_id: null,
+        showQuestion: false
     }
 },
 computed: {
@@ -97,6 +102,7 @@ methods: {
             this.category_id = response.data.question.category_id
             this.category_name = response.data.question.category_name
             if(this.questionCount < 5){
+                this.showQuestion = true
                 this.question = response.data.question.que_question
                 this.questionCount += 1
                 this.answers = this.shuffle(response.data.question.answers)
@@ -118,8 +124,12 @@ methods: {
             this.score += (10 - this.countdown)
             this.countdown = 0
             setTimeout(() => {
+               this.showQuestion = false 
+            }, 500)
+            setTimeout(() => {
                 event.target.style.backgroundColor = '#cadbe5'
                 event.target.style.color = '#252b41'
+                
                 this.showQuestions(this.score)
                 }, 1000)
         }else{
@@ -130,9 +140,14 @@ methods: {
                 this.score = 0
             }
             this.countdown = 0
+            
+            setTimeout(() => {
+               this.showQuestion = false 
+            }, 500)
             setTimeout(() => {
                 event.target.style.backgroundColor = '#cadbe5'
                 event.target.style.color = '#252b41'
+                
                 this.showQuestions(this.score)
                 }, 1000)
         }   
@@ -198,11 +213,15 @@ $bela_kao: #cadbe5;
             justify-content: center;
             align-items: center;
             padding: 1.5em 1.1em;
+            border-bottom: 5px solid $tamno_plava;
             width: 100%;
             background-color: $svetlo_plava;
             -webkit-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
             -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
             box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
+            @include laptop{
+                padding: 1em 1.1em;
+            }
                 & img{
                     width: 15%;
                     max-width: 50px;
@@ -213,6 +232,9 @@ $bela_kao: #cadbe5;
                     }
                     @include tablet{
                         max-width: 65px;
+                    }
+                    @include laptop{
+                        max-width: 55px;
                     }
                 }
                 & h2{
@@ -225,6 +247,9 @@ $bela_kao: #cadbe5;
                     @include tablet{
                         font-size: 2.8rem;
                     }
+                    @include laptop{
+                        font-size: 2.4rem;
+                    }
                 }
         }
         & .progress2 {
@@ -236,6 +261,10 @@ $bela_kao: #cadbe5;
             width: 96%;
             @include phone{
                 max-width: 650px;
+            }
+            @include laptop{
+                max-width: 750px;
+                margin: 1.9em 0 1em 0;
             }
         }
 
@@ -263,6 +292,9 @@ $bela_kao: #cadbe5;
             @include phone{
                 max-width: 570px;
             }
+            @include laptop{
+                max-width: 650px;
+            }
                 & p{
                     color: $bela_kao;
                     font-size: 1.2rem;
@@ -286,6 +318,9 @@ $bela_kao: #cadbe5;
             @include tablet{
                 max-width: 560px;
             }
+            @include laptop{
+                max-width: 650px;
+            }
                 & p{
                     color: $bela_kao;
                     font-size: 1.3rem;
@@ -295,6 +330,9 @@ $bela_kao: #cadbe5;
                     }
                     @include tablet{
                         font-size: 1.8rem;
+                    }
+                    @include laptop{
+                        font-size: 1.5rem;
                     }
                 }
         }
@@ -320,9 +358,50 @@ $bela_kao: #cadbe5;
                     padding: .7em 1em;
                     font-size: 1.3rem; 
                 }
+                @include laptop{
+                    padding: .5em 1em;
+                    font-size: 1.2rem;
+                }
+                    &:hover{
+                        cursor: pointer;
+                    }
             }
         }
 }
 
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-leave-active {
+  transition: all .7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
 
+.fade-enter,
+.fade-leave-to { opacity: 0; }
+.fade-enter-active,
+.fade-leave-active { transition: 0.5s; }
+
+.slide-enter {
+  opacity: 0;
+  transform: scale3d(2, 0.5, 1) translate3d(400px, 0, 0);
+}
+
+.slide-enter-to { transform: scale3d(1, 1, 1); }
+.slide-enter-active,
+.slide-leave-active { transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.slide-leave { transform: scale3d(1, 1, 1); }
+
+.slide-leave-to {
+  opacity: 0;
+  transform: scale3d(2, 0.5, 1) translate3d(-400px, 0, 0);
+}
+
+.rotate-enter { transform: perspective(500px) rotate3d(0, 1, 0, 90deg); }
+.rotate-enter-active,
+.rotate-leave-active { transition: 0.5s; }
+.rotate-leave-to { transform: perspective(500px) rotate3d(0, 1, 0, -90deg); }
 </style>

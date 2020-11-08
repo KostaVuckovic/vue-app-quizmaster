@@ -18,14 +18,16 @@
         v-show="isModalVisible"
         @close="closeModal"
     >
-        <template #body>
-
-            <img :src="avatarImage(gender)" v-if="gender" class="avatar" alt="avatar">
+        <template #body class="modalContainer">
 
             <div class="info">
-                <p><span class="spanUser">Name:</span> {{userName}} </p>
-                <p><span class="spanUser">Last name:</span> {{userLastname}} </p>
-                <p><span class="spanUser">Username:</span> {{userUsername}} </p>
+                <img :src="avatarImage(gender)" v-if="gender" class="avatar" alt="avatar">
+
+                <div class="wrap">
+                    <p><span class="spanUser">Name:</span> {{userName}} </p>
+                    <p><span class="spanUser">Last name:</span> {{userLastname}} </p>
+                    <p><span class="spanUser">Username:</span> {{userUsername}} </p>
+                </div>
             </div>
             
         </template>
@@ -147,6 +149,9 @@ $bela_kao: #cadbe5;
         justify-content: space-between;
         align-items: center;
         padding: 1.5em 1.1em;
+        border-left: 5px solid $tamno_plava;
+        border-right: 5px solid $tamno_plava;
+        border-bottom: 5px solid $tamno_plava;
         width: 100%;
         background-color: $svetlo_plava;
         border-radius: 0 0 40px 40px;
@@ -162,13 +167,14 @@ $bela_kao: #cadbe5;
             max-width: 630px;
         }
         @include laptop{
-            padding: 1.3em 1.4em;
-            max-width: 700px;
+            padding: 1.2em 1.5em;
+            max-width: 720px;
         }
             & h2{
                 color: $bela_kao;
                 font-size: 2.2rem;
                 text-align: center;
+                margin: 0;
                 @include tablet{
                     font-size: 2.4rem;
                 }
@@ -181,7 +187,7 @@ $bela_kao: #cadbe5;
             }
             img{
                 width: 12%;
-                max-width: 45px;
+                max-width: 50px;
                     &:hover{
                         cursor: pointer;
                     }
@@ -254,9 +260,59 @@ $bela_kao: #cadbe5;
                     }
             }
     }
+
     .avatar{
-        width: 30%;
+        width: 35%;
+        @include phone{
+            width: 40%;
+            max-width: 165px;
+        }
     }
+
+    .info{
+          width: 100%;
+          max-width: 300px;
+          // margin-top: 5.5em;
+          padding: 1em 0;
+          background-color: $svetlo_plava;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          border: 1px solid $narandza;
+          border-radius: 10px;
+          @include phone{
+            max-width: 350px;
+          }
+            & .avatar{
+              width: 45%;
+              margin-top: -100px;
+                @include phone{
+                    width: 55%;
+                    max-width: 165px;
+                    margin-top: -120px;
+                }
+            }
+
+            & .wrap{
+              width: 100%;
+              padding: .5em 1.5em;
+                & p{
+                  color: $bela_kao;
+                  margin: 1em 0;
+                  @include phone{
+                    font-size: 1.1rem;
+                  }
+                    & .spanUser{
+                      color: $narandza;
+                      margin-right: .5em;
+                      font-weight: 500;
+                    }
+                }
+            }
+
+            
+      }
     
 }
 </style>

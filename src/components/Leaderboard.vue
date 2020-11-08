@@ -81,6 +81,10 @@ $bela_kao: #cadbe5;
             & h2{
               margin: 0;
               color: $bela_kao;
+              @include laptop{
+                font-size: 1.7rem;
+                margin-left: .5em;
+              }
             }
             & button{
               border: none;

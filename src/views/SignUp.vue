@@ -207,7 +207,7 @@ $bela_kao: #cadbe5;
       }
       @include laptop{
         max-width: 450px;
-        padding: 1.2em 2.3em;
+        padding: 1.2em 2.5em;
       }
         & h1{
           color: $bela_kao;
@@ -231,13 +231,13 @@ $bela_kao: #cadbe5;
             font-size: 1.2rem;
           }
           @include laptop{
-            font-size: 1.05rem;
+            font-size: 1rem;
           }
         }
         & input[type="text"], input[type="password"]{
           border-radius: 5px;
           border: 1px solid $tamno_plava;
-          padding: .2em .5em;
+          padding: .1em .5em;
           font-size: 1rem;
             &:focus{
               outline: none;
@@ -250,6 +250,9 @@ $bela_kao: #cadbe5;
           font-size: 1.1rem;
           @include tablet{
             font-size: 1.2rem;
+          }
+          @include laptop{
+            font-size: 1.1rem;
           }
         }
         & .genders{
@@ -268,7 +271,7 @@ $bela_kao: #cadbe5;
                   font-size: 1.2rem;
                 }
                 @include laptop{
-                  font-size: 1.1rem;
+                  font-size: 1rem;
                 }
 
               }
@@ -308,6 +311,9 @@ $bela_kao: #cadbe5;
           margin: 1em 0 0 0;
           @include tablet{
               font-size: 1.1rem;
+          }
+          @include laptop{
+            font-size: 1rem;
           }
             & span{
               color: $narandza;

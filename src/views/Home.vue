@@ -3,14 +3,29 @@
 
     <header>
       <h2>Quiz <span>Master</span></h2>
-      <img id="img" class="img" src="../assets/quiz_bg2.svg" alt="quiz">
+      <img id="img" class="img" src="../assets/laptop_bg2.svg" alt="quiz">
       <button id="leaderboardBtn" class="leaderboardBtn" @click="showLeaderboard">LEADERBOARD</button>
       
+      <div class="headerButtons">
+        <p class="btnLaptop" @click="showLeaderboard">LEADERBOARD</p>
+        <p class="btnLaptop" @click="signUp()">SIGN UP</p>
+        <p class="btnLaptop" @click="signIn()">SIGN IN</p>
+      </div>
     </header>
 
     <div class="buttons">
       <button class="btn" @click="signUp()">SIGN UP</button>
       <button class="btn" @click="signIn()">SIGN IN</button>
+    </div>
+
+    <div class="containerLaptop">
+      <div class="containerText">
+        <h1 class="firstH">Quiz</h1>
+        <h1 class="secondH">Master</h1>
+        <p class="textIn">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+
+      <img src="../assets/laptop_bg2.svg" alt="quiz">
     </div>
 
     <Leaderboard v-show="leaderboardVisible" @close="closeLeaderboard">
@@ -116,6 +131,9 @@ $bela_kao: #cadbe5;
   flex-direction: column;
   height: 100vh;
   counter-reset: score;
+  @include laptop{
+    justify-content: flex-start;
+  }
     & header{
       display: flex;
       flex-direction: column;
@@ -134,7 +152,10 @@ $bela_kao: #cadbe5;
       box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
       @include laptop{
         animation: none; 
-        padding: 1em 0;
+        padding: .7em 2.5em;
+        flex-direction: row;
+        border-radius: 0 0 20px 20px;
+        border-bottom: 5px solid $tamno_plava;
       }
         & h2{
           color: $bela_kao;
@@ -154,15 +175,20 @@ $bela_kao: #cadbe5;
             font-size: 5rem;
           }
           @include laptop{
-            font-size: 3.5rem;
+            font-size: 2.2rem;
+            animation: none;
+            opacity: 1;
+              &:hover{
+                cursor: default;
+              }
           }
             & span{
               color: $narandza;
             }
         }
         & .img{
-          width: 75%;
-          max-width: 300px;
+          width: 80%;
+          max-width: 350px;
           animation-duration: 2s;
           animation-name: opacityAnimation;
           animation-delay: 2s;
@@ -179,11 +205,12 @@ $bela_kao: #cadbe5;
             max-width: 400px;
             width: 60%;
             margin: 1em 0;
+            display: none;
           }
         }
         & .leaderboardBtn{
           background-color: $narandza;
-          border-radius: 20px;
+          border-radius: 10px;
           border: 1px solid $narandza;
           padding: .9em 3em;
           animation-duration: 2s;
@@ -195,28 +222,48 @@ $bela_kao: #cadbe5;
           max-width: 300px;
           color: $bela_kao;
           font-size: 1rem;
-          font-weight: 500;
           @include phone{
             font-size: 1.2rem;
             max-width: 350px;
             padding: .6em .2em;
           }
           @include tablet{
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             max-width: 450px;
-            padding: .6em .2em;
+            padding: .7em .2em;
           }
           @include laptop{
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 350px;
             padding: .4em .2em;
             margin-top: 1em;
             border-radius: 10px;
+            display: none;
           }
             &:focus{
               outline: none;
             }
         } 
+
+        .headerButtons{
+          display: none;
+          @include laptop{
+            display: block;
+            display: flex;
+          }
+            & .btnLaptop{
+              display: none;
+              @include laptop{
+                display: block;
+                margin: 0 0 0 1.5em;
+                color: $bela_kao;
+                font-size: .9rem;
+                  &:hover{
+                    cursor: pointer;
+                  }
+              }
+            }
+        }
     }
     & .buttons{
       display: flex;
@@ -227,7 +274,7 @@ $bela_kao: #cadbe5;
       padding: 2px 0;
         & .btn{
           background-color: $narandza;
-          border-radius: 20px;
+          border-radius: 10px;
           border: 1px solid $narandza;
           padding: .9em 3em;
           width: 85%;
@@ -242,19 +289,56 @@ $bela_kao: #cadbe5;
             padding: .6em .2em;
           }
           @include tablet{
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             max-width: 450px;
-            padding: .6em .2em;
+            padding: .7em .2em;
+            margin-bottom: 15px;
           }
           @include laptop{
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 350px;
             padding: .4em .2em;
             margin-top: 1em;
             border-radius: 10px;
+            display: none;
           }
         }
     }
+
+    & .containerLaptop{
+      display: none;
+      @include laptop{
+        display: block;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 2em;
+      }
+        & img{
+          width: 45%;
+        }
+        & .containerText{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+            & .firstH{
+              color: $bela_kao;
+              font-size: 6rem;
+              margin: 0;
+              line-height: 0;
+            }
+            & .secondH{
+              color: $narandza;
+              font-size: 6rem;
+              margin: 0;
+            }
+            & .textIn{
+              color: $bela_kao
+            }
+        }
+    }
+
     & .score{
       display: flex;
       align-items: center;
@@ -263,34 +347,47 @@ $bela_kao: #cadbe5;
       border-radius: 10px;
       margin-top: .5em;
       background-color: $svetlo_plava;
+      @include laptop{
+        padding: .2em .7em;
+      }
         &::before{
           counter-increment: score;
           content:  counter(score) ". ";
           font-weight: 500;
           color: $bela_kao;
         }
-        &:first-child::before{
-          font-family: "Material Icons"; 
-          font-weight: 900; 
-          content: "emoji_events";
-          display: inline-block;
-          vertical-align: middle;
-          color: $narandza;
-          font-size: 1.5rem;
+        &:first-child{
+          border: 1px solid $narandza;
+            &::before{
+              font-family: "Material Icons"; 
+              font-weight: 900; 
+              content: "emoji_events";
+              display: inline-block;
+              vertical-align: middle;
+              color: $narandza;
+              font-size: 1.5rem;
+            }
         }
         & img{
           width: 9%;
           margin: 0 0 0 1em;
-          
+          @include laptop{
+            max-width: 27px;
+          }
         }
         & .lead-username{
           margin: 0 0 0 1em;
           color: $bela_kao;
+          @include laptop{
+            font-size: .9rem;
+          }
         }
         & .lead-score{
           color: $narandza;
           margin: 0 0 0 auto;
-          
+          @include laptop{
+            font-size: .9rem;
+          }
         }
       }
 }

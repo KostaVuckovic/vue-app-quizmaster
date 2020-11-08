@@ -70,20 +70,32 @@ $bela_kao: #cadbe5;
       background-color: $tamno-plava;
       padding: 1em;
       border-radius: 15px;
-      max-width: 400px;
+      max-width: 380px;
+      width: 85%;
       transition: all .3s ease;
       @include phone{
-        width: 90%;
-        max-width: 500px;
+        max-width: 470px;
+        padding: 1.2em;
       }
         & header{
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 1em;
+          margin-bottom: 5em;
+          padding-bottom: .5em;
+          border-bottom: 1px solid $narandza;
+          @include phone{
+            margin-bottom: 6em;
+          }
             & p{
               margin: 0;
               color: $bela_kao;
+              @include phone{
+                font-size: 1.1rem;
+              }
+              @include laptop{
+                font-size: 1.2rem;  
+              }
             }
             & button{
               border: none;
@@ -97,6 +109,7 @@ $bela_kao: #cadbe5;
             }
         }
         & .modal-body{
+          // margin-top: 2em;
           padding: .5em;
           display: flex;
           flex-direction: column;
