@@ -134,7 +134,6 @@ $bela_kao: #cadbe5;
       }
       @include desktop{
           width: 40%;
-          max-width: 500px;
           padding: 1.8em 2.8em;
       }
         & h1{

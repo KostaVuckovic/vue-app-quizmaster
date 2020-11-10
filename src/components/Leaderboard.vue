@@ -92,6 +92,7 @@ $bela_kao: #cadbe5;
               background: transparent;
               font-weight: 500;
               color: $bela_kao;
+              padding-top: 0;
                 &:focus{
                   outline: none;
                 }

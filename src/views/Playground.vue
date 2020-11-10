@@ -61,7 +61,7 @@ computed: {
 },
 mounted(){
     this.showQuestions(0);
-    // this.countDownTimer();
+    this.countDownTimer();
 },
 beforeRouteEnter (to, from, next) {
   let sid = localStorage.getItem('sid');
@@ -118,19 +118,21 @@ methods: {
     },
     clickAns: _.debounce(
         function(a, event){
+        clearTimeout(this.timer)
         if(a === 'CORRECT'){
             event.target.style.backgroundColor = 'green'
             event.target.style.color = '#fff'
             this.score += (10 - this.countdown)
-            this.countdown = 0
+            this.countdown = -1
+            this.countDownTimer()
             setTimeout(() => {
                this.showQuestion = false 
             }, 500)
             setTimeout(() => {
                 event.target.style.backgroundColor = '#cadbe5'
                 event.target.style.color = '#252b41'
-                
                 this.showQuestions(this.score)
+                
                 }, 1000)
         }else{
             event.target.style.backgroundColor = 'red'
@@ -139,15 +141,14 @@ methods: {
             if(this.score < 0){
                 this.score = 0
             }
-            this.countdown = 0
-            
+            this.countdown = -1
+            this.countDownTimer()
             setTimeout(() => {
                this.showQuestion = false 
             }, 500)
             setTimeout(() => {
                 event.target.style.backgroundColor = '#cadbe5'
                 event.target.style.color = '#252b41'
-                
                 this.showQuestions(this.score)
                 }, 1000)
         }   
@@ -160,13 +161,13 @@ methods: {
                 this.countDownTimer()
             }, 1000)
         }else if(this.questionCount < 5){
-            this.score -= 5
-            if(this.score < 0){
-                this.score = 0
-            }
             this.countdown = 0
             this.countDownTimer()
             setTimeout(() => {
+                this.score -= 5
+                if(this.score < 0){
+                    this.score = 0
+                }
                 this.showQuestions(this.score)
             }, 2000)
             
@@ -220,7 +221,7 @@ $bela_kao: #cadbe5;
             -moz-box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
             box-shadow: 0px 9px 63px 12px rgba(0,0,0,0.42);
             @include laptop{
-                padding: 1em 1.1em;
+                padding: .7em 0;
             }
                 & img{
                     width: 15%;
@@ -234,7 +235,7 @@ $bela_kao: #cadbe5;
                         max-width: 65px;
                     }
                     @include laptop{
-                        max-width: 55px;
+                        max-width: 50px;
                     }
                 }
                 & h2{
@@ -248,7 +249,7 @@ $bela_kao: #cadbe5;
                         font-size: 2.8rem;
                     }
                     @include laptop{
-                        font-size: 2.4rem;
+                        font-size: 2.1rem;
                     }
                 }
         }
@@ -264,7 +265,7 @@ $bela_kao: #cadbe5;
             }
             @include laptop{
                 max-width: 750px;
-                margin: 1.9em 0 1em 0;
+                margin: 1.8em 0 1em 0;
             }
         }
 
@@ -294,6 +295,7 @@ $bela_kao: #cadbe5;
             }
             @include laptop{
                 max-width: 650px;
+                padding: .6em;
             }
                 & p{
                     color: $bela_kao;
@@ -301,6 +303,9 @@ $bela_kao: #cadbe5;
                     margin: 0;
                     @include phone{
                         font-size: 1.3rem;
+                    }
+                    @include laptop{
+                        font-size: 1.2rem;
                     }
                         & span{
                             color: $narandza;

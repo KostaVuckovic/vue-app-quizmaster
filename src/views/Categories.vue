@@ -5,7 +5,7 @@
           <img :src="avatarImage(this.gender)" alt="avatar" v-if="this.gender" @click="showModal">
       </header>
 
-      <h3>Choose a category</h3>
+      <h3>Choose a category!</h3>
 
       <div class="categories">
         <div class="category" v-for="category in categories" :key="category.cat_id" @click="playCategory(category.cat_id, category.cat_category)">
@@ -27,6 +27,7 @@
                     <p><span class="spanUser">Name:</span> {{userName}} </p>
                     <p><span class="spanUser">Last name:</span> {{userLastname}} </p>
                     <p><span class="spanUser">Username:</span> {{userUsername}} </p>
+                    <p><span class="spanUser">Best score:</span> {{userBestScore}} </p>
                 </div>
             </div>
             
@@ -51,7 +52,8 @@ data(){
         gender: null,
         userName: '',
         userUsername: '',
-        userLastname: ''
+        userLastname: '',
+        userBestScore: ''
     }
 },
 mounted(){
@@ -75,6 +77,7 @@ methods:{
             this.userName = response.data.info[0].user_name;
             this.userLastname = response.data.info[0].user_lastname;
             this.userUsername = response.data.info[0].user_username;
+            this.userBestScore = response.data.info2[0].best_score;
             this.gender = response.data.info[0].ava_id;
         })
     },
@@ -148,7 +151,7 @@ $bela_kao: #cadbe5;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5em 1.1em;
+        padding: 1.3em 1.1em;
         border-left: 5px solid $tamno_plava;
         border-right: 5px solid $tamno_plava;
         border-bottom: 5px solid $tamno_plava;
@@ -167,27 +170,34 @@ $bela_kao: #cadbe5;
             max-width: 630px;
         }
         @include laptop{
-            padding: 1.2em 1.5em;
-            max-width: 720px;
+            padding: 1em 1.5em;
+            max-width: 800px;
         }
             & h2{
                 color: $bela_kao;
-                font-size: 2.2rem;
+                font-size: 2rem;
                 text-align: center;
                 margin: 0;
                 @include tablet{
                     font-size: 2.4rem;
                 }
                 @include laptop{
-                    font-size: 2.2rem;
+                    font-size: 2rem;
                 }
+                    &:hover{
+                        cursor: default;
+                    }
                     & span{
                         color: $narandza;
                     }
+
             }
             img{
                 width: 12%;
                 max-width: 50px;
+                @include laptop{
+                    max-width: 45px;
+                }
                     &:hover{
                         cursor: pointer;
                     }
@@ -299,7 +309,7 @@ $bela_kao: #cadbe5;
               padding: .5em 1.5em;
                 & p{
                   color: $bela_kao;
-                  margin: 1em 0;
+                  margin: .8em 0 0 0;
                   @include phone{
                     font-size: 1.1rem;
                   }

@@ -61,7 +61,7 @@ data(){
 },
 mounted(){
     this.showQuestions(this.score)   
-    // this.countDownTimer()
+    this.countDownTimer()
 },
 computed: {
     SCORE(){
@@ -118,22 +118,23 @@ methods: {
     },
     sendAnswer: _.debounce(
         function (ans, id) {
+        clearTimeout(this.timer)
         let sid = localStorage.getItem('sid');
         axios.post('http://051b122.mars-e1.mars-hosting.com/quiz/engine/answer_check', {sid: sid, answer: ans, id: id })
         .then((response) => {
             if(response.data.check === 'CORRECT'){
                 this.score += 5;
                 this.correctShow = true
-                // document.querySelector('.answer-check').style.color = "green"
                 this.checkAnswer = "Correct!"
+                this.countdown = -1
+                this.countDownTimer()
                 setTimeout(() => {
                     this.showQuestion = false 
                 }, 500)
                 setTimeout(() => {
-                    this.countdown = 0
                     this.checkAnswer = ''
                     this.showQuestions(this.score)
-                }, 1200)
+                }, 1000)
                 this.answerModel = ''
             }else{
                 this.wrongShow = true
@@ -141,42 +142,44 @@ methods: {
                 if(this.score < 0){
                     this.score = 0
                 }
-                // document.querySelector('.answer-check').style.color = "red"
                 this.checkAnswer = response.data.answer
+                this.countdown = -1
+                this.countDownTimer()
                 setTimeout(() => {
                     this.showQuestion = false
                 }, 500)
                 setTimeout(() => {
-                    this.countdown = 0
                     this.checkAnswer = '' 
                     this.showQuestions(this.score)
-                }, 1200)
+                }, 1000)
                 this.answerModel = ''
             }
         })
     }, 200),
     countDownTimer(){
-        if(this.countdown < 20) {
+        if(this.countdown < 10) {
             this.timer = setTimeout( () => {
                 this.countdown += 1
-                document.querySelector('.progress-bar2').style.width = (this.countdown*5) + '%';
+                document.querySelector('.progress-bar2').style.width = `${this.countdown*10}%`;
                 this.countDownTimer(this.score)
             }, 1000)
         }else if(this.questionCount < 5){
-            this.score -= 5
-            if(this.score < 0){
-                this.score = 0
-            }
             this.countdown = 0
             this.countDownTimer()
-            this.showQuestions(this.score)
+            setTimeout(() => {
+                this.score -= 5
+                if(this.score < 0){
+                    this.score = 0
+                }
+                this.showQuestions(this.score)
+            },2000)
+            
         }else{
             clearTimeout(this.timer)
             this.countdown = 0                
             this.$router.push({name: 'Finish'})
         }
     }
-    
 }
 }
 </script>
@@ -273,7 +276,7 @@ $bela_kao: #cadbe5;
             border-radius: 30px;
             background-image: 
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-            transition: 0.4s linear;  
+            transition: 1s linear;  
             transition-property: width, background-color;    
         }
 
@@ -301,6 +304,9 @@ $bela_kao: #cadbe5;
                     margin: 0;
                     @include phone{
                         font-size: 1.3rem;
+                    }
+                    @include laptop{
+                        font-size: 1.2rem;
                     }
                         & span{
                             color: $narandza;
@@ -347,7 +353,7 @@ $bela_kao: #cadbe5;
             align-items: center;
                 & .answer-check{
                     font-size: 1.5rem;
-                    font-weight: 800;
+                    font-weight: 500;
                 }
                 & .correct{
                     color: green;

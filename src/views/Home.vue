@@ -22,7 +22,9 @@
       <div class="containerText">
         <h1 class="firstH">Quiz</h1>
         <h1 class="secondH">Master</h1>
-        <p class="textIn">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        <p class="textIn"><span class="spanOrange">Hello</span>, you have big brain and time to play?</p>
+        <p class="textIn">First, <span class="spanOrange">sign up</span> and <span class="spanOrange">play</span> quiz!</p>
+        <button class="btn" @click="signUp()">SIGN UP</button>
       </div>
 
       <img src="../assets/laptop_bg2.svg" alt="quiz">
@@ -94,13 +96,13 @@ $bela_kao: #cadbe5;
   @media (min-width: 480px) { @content; }
 }
 @mixin tablet {
-  @media (min-width: 769px) { @content; }
+  @media (min-width: 768px) { @content; }
 }
 @mixin laptop {
-  @media (min-width: 1025px) { @content; }
+  @media (min-width: 1024px) { @content; }
 }
 @mixin desktop {
-  @media (min-width: 1281px) { @content; }
+  @media (min-width: 1280px) { @content; }
 }
 @mixin big-desktop {
   @media (min-width: 1800px) { @content; }
@@ -156,6 +158,7 @@ $bela_kao: #cadbe5;
         flex-direction: row;
         border-radius: 0 0 20px 20px;
         border-bottom: 5px solid $tamno_plava;
+        max-width: 1500px;
       }
         & h2{
           color: $bela_kao;
@@ -195,11 +198,11 @@ $bela_kao: #cadbe5;
           animation-fill-mode: forwards;  
           opacity: 0;
           @include phone{
-            max-width: 450px;
+            max-width: 470px;
           }
           @include tablet{
-            max-width: 580px;
-            width: 60%;
+            max-width: 590px;
+            width: 70%;
           }
           @include laptop{
             max-width: 400px;
@@ -228,7 +231,7 @@ $bela_kao: #cadbe5;
             padding: .6em .2em;
           }
           @include tablet{
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             max-width: 450px;
             padding: .7em .2em;
           }
@@ -289,7 +292,7 @@ $bela_kao: #cadbe5;
             padding: .6em .2em;
           }
           @include tablet{
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             max-width: 450px;
             padding: .7em .2em;
             margin-bottom: 15px;
@@ -312,10 +315,12 @@ $bela_kao: #cadbe5;
         display: flex;
         justify-content: space-around;
         width: 100%;
+        max-width: 1400px;
         margin-top: 2em;
       }
         & img{
           width: 45%;
+          max-width: 600px;
         }
         & .containerText{
           display: flex;
@@ -331,10 +336,31 @@ $bela_kao: #cadbe5;
             & .secondH{
               color: $narandza;
               font-size: 6rem;
-              margin: 0;
+              margin: 0 0 .2em 0;
             }
             & .textIn{
-              color: $bela_kao
+              color: $bela_kao;
+              margin: 0;
+              font-size: 1.5rem;
+                & .spanOrange{
+                  color: $narandza;
+                  font-weight: 500;
+                }
+            }
+            & .btn{
+              background-color: $narandza;
+              border-radius: 10px;
+              border: 1px solid $narandza;
+              padding: .6em 1em;
+              width: 65%;
+              max-width: 200px;
+              color: $bela_kao;
+              font-size: 1rem;
+              font-weight: 500;
+              margin-top: 1em;
+            }
+            &:hover{
+              cursor: default;
             }
         }
     }

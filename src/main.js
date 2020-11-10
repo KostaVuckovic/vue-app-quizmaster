@@ -5,10 +5,10 @@ import store from './store'
 import axios from 'axios'
 // fontawesome 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faRedoAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faRedoAlt, faTimes, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faRedoAlt, faTimes)
+library.add(faRedoAlt, faTimes, faSignOutAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
