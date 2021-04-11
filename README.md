@@ -1,24 +1,11 @@
-# quizmaster
+# Quizmaster
 
-## Project setup
-```
-npm install
-```
+## Description
+A user can sign up or sign in, then choose a favorite category and enjoys the quiz with two levels. Level one is four answers type game and in level two the the user must fill in the response field. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Techologies used
+* Vue
+* Sass
+* Rest API
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
