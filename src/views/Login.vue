@@ -161,7 +161,7 @@ $bela_kao: #cadbe5;
               font-size: 1.2rem;
           }
           @include laptop{
-              font-size: 1rem;
+              font-size: .9rem;
           }
         }
         & input[type="text"], input[type="password"]{

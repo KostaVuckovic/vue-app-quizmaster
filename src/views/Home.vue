@@ -22,8 +22,8 @@
       <div class="containerText">
         <h1 class="firstH">Quiz</h1>
         <h1 class="secondH">Master</h1>
-        <p class="textIn"><span class="spanOrange">Hello</span>, you have big brain and time to play?</p>
-        <p class="textIn">First, <span class="spanOrange">sign up</span> and <span class="spanOrange">play</span> quiz!</p>
+        <p class="textIn"><span class="spanOrange">Hello</span>, you have a big brain and time to play?</p>
+        <p class="textIn">First, <span class="spanOrange">sign up</span> and <span class="spanOrange">play!</span></p>
         <button class="btn" @click="signUp()">SIGN UP</button>
       </div>
 

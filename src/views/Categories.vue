@@ -171,7 +171,7 @@ $bela_kao: #cadbe5;
         }
         @include laptop{
             padding: 1em 1.5em;
-            max-width: 800px;
+            max-width: 830px;
         }
             & h2{
                 color: $bela_kao;

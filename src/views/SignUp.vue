@@ -134,13 +134,13 @@ export default {
           this.usernameModel = '';
           this.passwordModel = '';
           this.gender = null;
-          this.msg = response.data.msg + ' Redirecting to login page...';
+          this.msg = response.data.msg;
           let mess = document.querySelector('.msg');
           mess.style.visibility = "visible";
           this.animateCSS('.msg', 'fadeIn');
           setTimeout(() => {
             this.$router.push({name: 'Login'})
-          }, 2700); 
+          }, 2000); 
         }else if(response.data.msg2) {
           console.log(response.data.msg2)
           this.msg = response.data.msg2;
@@ -231,7 +231,7 @@ $bela_kao: #cadbe5;
             font-size: 1.2rem;
           }
           @include laptop{
-            font-size: 1rem;
+            font-size: .9rem;
           }
         }
         & input[type="text"], input[type="password"]{
